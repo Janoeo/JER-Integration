@@ -4,7 +4,7 @@ import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
 import jeresources.api.IWorldGenRegistry;
 import jeresources.api.distributions.*;
 import jeresources.api.drop.LootDrop;
-import jeresources.api.restrictions.BiomeRestriction;
+import jeresources.api.restrictions.DimensionRestriction;
 import jeresources.api.restrictions.Restriction;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.common.config.Config;
@@ -23,12 +23,12 @@ public class TConstructWorldGen extends WorldGenIntegration {
             final DistributionBase distributionLargeOre = new DistributionTriangular( // COBALT_ORE_FEATURE_LARGE
                     32,
                     16,
-                    ((Config.COMMON.veinCountCobalt.get() / 2f) / 8f) / 100f
+                    DistributionHelpers.calculateChance(Config.COMMON.veinCountCobalt.get() / 2, 8, 16, 48)
             );
 
             final DistributionBase distribution = DistributionHelpers.addDistribution(distributionSmallOre, distributionLargeOre);
 
-            final Restriction restriction = new Restriction(BiomeRestriction.NETHER);
+            final Restriction restriction = Restriction.NETHER;
 
             final ItemStack cobaltStack = new ItemStack(TinkerWorld.cobaltOre.get());
 
