@@ -4,7 +4,6 @@ import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
 import jeresources.api.IWorldGenRegistry;
 import jeresources.api.distributions.*;
 import jeresources.api.drop.LootDrop;
-import jeresources.api.restrictions.DimensionRestriction;
 import jeresources.api.restrictions.Restriction;
 import net.minecraft.item.ItemStack;
 import slimeknights.tconstruct.common.config.Config;

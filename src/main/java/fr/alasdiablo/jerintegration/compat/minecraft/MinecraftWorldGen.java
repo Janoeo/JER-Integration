@@ -8,15 +8,10 @@ import jeresources.api.distributions.DistributionHelpers;
 import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
-import jeresources.api.restrictions.BiomeRestriction;
-import jeresources.api.restrictions.DimensionRestriction;
 import jeresources.api.restrictions.Restriction;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class MinecraftWorldGen extends WorldGenIntegration {
     @Override

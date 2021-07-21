@@ -71,6 +71,8 @@ dependencies {
 
     implementation fg.deobf("curse.maven:mantle-74924:3389377")                     // Mantle
     implementation fg.deobf("curse.maven:tinkers-construct-74072:3389395")          // Tinkers Construct 3
+
+    implementation fg.deobf("curse.maven:immersive-engineering-231951:3377691")     // Immersive Engineering
 }
 
 jar {
