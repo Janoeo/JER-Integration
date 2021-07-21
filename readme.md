@@ -77,5 +77,5 @@ If you want to contribute you can to it via:
 
 - [AlasDiablo](https://github.com/AlasDiablo) · [lIotaMiu](https://github.com/liotamiu) - Original author, main contributor
 - [Dadadodu](https://github.com/Dadadodu) · [Safyrus](https://github.com/Safyrus) - Testing, proposition
-- [Any Contributor](https://github.com/Janoeo/Foundation/graphs/contributors) - Bug report, bug fix
+- [Any Contributor](https://github.com/Janoeo/JER-Integration/graphs/contributors) - Bug report, bug fix
 - And people who download my mod!
