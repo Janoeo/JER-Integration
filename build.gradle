@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.0'
+version = '1.1.0'
 group = 'fr.alasdiablo.jerintegration'
 archivesBaseName = 'JER-Integration'
 
@@ -72,7 +72,11 @@ dependencies {
     implementation fg.deobf("curse.maven:mantle-74924:3389377")                     // Mantle
     implementation fg.deobf("curse.maven:tinkers-construct-74072:3389395")          // Tinkers Construct 3
 
-    implementation fg.deobf("curse.maven:immersive-engineering-231951:3377691")     // Immersive Engineering
+    implementation fg.deobf("curse.maven:mekanism-268560:3206392")                  // Mekanism
+
+//    implementation fg.deobf("curse.maven:cofh-core-69162:3407019")                  // CoFH Core
+//    implementation fg.deobf("curse.maven:thermal-foundation-222880:3407024")        // Thermal Foundation
+//    implementation fg.deobf("curse.maven:applied-energistics-2-223794:3354897")     // Applied Energistics 2
 }
 
 jar {
