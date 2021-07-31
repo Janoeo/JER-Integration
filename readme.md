@@ -48,11 +48,14 @@
 ### Dependencies
 
 + Required
+
   + [Just Enough Items (JEI)](https://www.curseforge.com/minecraft/mc-mods/jei)
   + [Just Enough Resources (JER)](https://www.curseforge.com/minecraft/mc-mods/just-enough-resources-jer)
 
 + Optionals / Compatibles
-  + [Tinkers Construct 3](https://www.curseforge.com/minecraft/mc-mods/tinkers-construct)
+  
+  + [Tinkers Construct 3](https://www.curseforge.com/minecraft/mc-mods/tinkers-construct) (Ore generation / since 1.0.0)
+  + [Mekanism](https://www.curseforge.com/minecraft/mc-mods/mekanism) (Ore generation / since 1.1.0)
 
 ## Contributing
 
