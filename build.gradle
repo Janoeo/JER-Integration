@@ -1,25 +1,50 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
+apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
-version = '1.1.0'
+def majorVersion = 2
+def minorVersion = 1
+def buildVersion = 0
+def isExperimental = true
+version = "${majorVersion}.${minorVersion}.${buildVersion}"
+if (isExperimental) {
+    version += '-experimental'
+}
+
 group = 'fr.alasdiablo.jerintegration'
 archivesBaseName = 'JER-Integration'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8)
+def manifestAttributes = [
+        "Specification-Title"     : "JER-Integration",
+        "Specification-Vendor"    : "AlasDiablo",
+        "Specification-Version"   : "1",
+        "Implementation-Title"    : project.name,
+        "Implementation-Version"  : project.jar.archiveVersion,
+        "Implementation-Vendor"   : "AlasDiablo",
+        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+]
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
+def outputFolder = file(rootProject.getRootDir().getPath() + '/output')
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+def deobfSourceClassifier
+
 minecraft {
-    mappings channel: 'official', version: '1.16.5'
+    mappings channel: 'official', version: '1.18.1'
+    deobfSourceClassifier = getMappings().get()
     runs {
         client {
             workingDirectory project.file('run')
@@ -64,47 +89,49 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.16.5-36.1.35'
-    compile fileTree(dir:'lib', include:'*.jar')
-    implementation fg.deobf("curse.maven:jei-238222:3383214")                       // JEI
-    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3336760") // JER
+    minecraft 'net.minecraftforge:forge:1.18.1-39.0.17'
 
-    implementation fg.deobf("curse.maven:mantle-74924:3389377")                     // Mantle
-    implementation fg.deobf("curse.maven:tinkers-construct-74072:3389395")          // Tinkers Construct 3
+    implementation fg.deobf("curse.maven:jei-238222:3599262")                       // JEI
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3575590") // JER
 
-    implementation fg.deobf("curse.maven:mekanism-268560:3206392")                  // Mekanism
+    implementation fg.deobf("curse.maven:applied-energistics-223794:3599934")       // Applied Energistics 2
+
+//    implementation fg.deobf("curse.maven:mantle-74924:3389377")                     // Mantle
+//    implementation fg.deobf("curse.maven:tinkers-construct-74072:3389395")          // Tinkers Construct 3
+
+//    implementation fg.deobf("curse.maven:mekanism-268560:3206392")                  // Mekanism
 
 //    implementation fg.deobf("curse.maven:cofh-core-69162:3407019")                  // CoFH Core
 //    implementation fg.deobf("curse.maven:thermal-foundation-222880:3407024")        // Thermal Foundation
 //    implementation fg.deobf("curse.maven:applied-energistics-2-223794:3354897")     // Applied Energistics 2
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 
 jar {
-    manifest {
-        attributes([
-            "Specification-Title": "jerintegration",
-            "Specification-Vendor": "AlasDiablo",
-            "Specification-Version": "1",
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"AlasDiablo",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+    manifest.attributes(manifestAttributes)
+    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
-
 
 jar.finalizedBy('reobfJar')
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file:///${project.projectDir}/mcmodsrepo"
-        }
-    }
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    def archiveName = 'sources-' + deobfSourceClassifier
+    archiveClassifier.set(archiveName)
+    destinationDirectory.set(outputFolder)
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    def archiveName = 'deobf-' + deobfSourceClassifier
+    archiveClassifier.set(archiveName)
+    manifest.attributes(manifestAttributes)
+    destinationDirectory.set(outputFolder)
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives deobfJar
 }

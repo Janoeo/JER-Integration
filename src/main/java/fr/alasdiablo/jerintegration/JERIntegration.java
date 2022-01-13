@@ -15,8 +15,7 @@ public class JERIntegration {
     private static final ModList MOD_LIST = ModList.get();
 
     public static class Compat {
-        public static boolean TINKERS_CONSTRUCT = MOD_LIST.isLoaded("tconstruct");
-        public static boolean MEKANISM = MOD_LIST.isLoaded("mekanism");
+        public static boolean AE2 = MOD_LIST.isLoaded("ae2");
     }
 
     public final CompatibilityHandler compatibilityHandler;

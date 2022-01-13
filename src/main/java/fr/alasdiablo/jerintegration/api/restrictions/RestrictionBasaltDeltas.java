@@ -2,8 +2,8 @@ package fr.alasdiablo.jerintegration.api.restrictions;
 
 import jeresources.api.restrictions.BiomeRestriction;
 import jeresources.api.restrictions.Restriction;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biomes;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +21,7 @@ public class RestrictionBasaltDeltas extends Restriction {
 
     @Override
     public String getDimensionRestriction() {
-        return World.NETHER.location().toString();
+        return Level.NETHER.location().toString();
     }
 
     @Override
