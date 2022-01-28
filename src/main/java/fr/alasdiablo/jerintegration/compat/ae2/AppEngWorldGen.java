@@ -9,10 +9,11 @@ import jeresources.api.conditionals.Conditional;
 import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.drop.LootDrop;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class AppEngWorldGen extends WorldGenIntegration {
     @Override
-    public void registerWorldGen(IWorldGenRegistry registry) {
+    public void registerWorldGen(@NotNull IWorldGenRegistry registry) {
         registry.register(
                 new ItemStack(AEBlocks.QUARTZ_ORE),
                 new DistributionSquare(
