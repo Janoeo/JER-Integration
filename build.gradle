@@ -46,7 +46,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2021.12.19-1.18.1'
+    mappings channel: 'parchment', version: '2022.01.23-1.18.1'
     deobfSourceClassifier = getMappings().get()
     runs {
         client {
@@ -94,13 +94,17 @@ repositories {
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.1-39.0.59'
 
-    implementation fg.deobf("curse.maven:jei-238222:3599262")                       // JEI
-    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3575590") // JER
+    // implementation fileTree(dir:'lib', include:'*.jar')
 
-    implementation fg.deobf("curse.maven:applied-energistics-223794:3599934")       // Applied Energistics 2
+    implementation fg.deobf("curse.maven:jei-238222:3599262")                       // JEI (9.2.1.69)
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3575590") // JER (0.13.1.138)
 
-    implementation fg.deobf("curse.maven:flywheel-486392:3623314")                  // Flywheel
-    implementation fg.deobf("curse.maven:create-328085:3623348")                    // Create
+    implementation fg.deobf("curse.maven:applied-energistics-223794:3615156")       // Applied Energistics 2 (10.0.1 [FORGE])
+
+    implementation fg.deobf("curse.maven:flywheel-486392:3623314")                  // Flywheel (0.6.0)
+    implementation fg.deobf("curse.maven:create-328085:3623348")                    // Create (v0.4d)
+
+    implementation fg.deobf("curse.maven:immersiveengineering-231951:3587149")     // Immersive Engineering (7.1.0-145)
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
