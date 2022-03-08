@@ -23,21 +23,21 @@ JER Integration for other mod
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
-    modId = "jei"
-    mandatory = true
-    versionRange = "[9.2.1.69,)"
-    ordering = "AFTER"
-    side = "BOTH"
-[[dependencies.jerintegration]]
-    modId = "jeresources"
+modId = "jei"
 mandatory = true
-versionRange = "[0.13.1.138,)"
+versionRange = "[9.4.1.112,)"
+ordering = "AFTER"
+side = "BOTH"
+[[dependencies.jerintegration]]
+modId = "jeresources"
+mandatory = true
+versionRange = "[0.14.0.155,)"
 ordering = "AFTER"
 side = "BOTH"
 [[dependencies.jerintegration]]
 modId = "ae2"
 mandatory = false
-versionRange = "[10.0.0-beta.4,)"
+versionRange = "[10.0.1,)"
 ordering = "AFTER"
 side = "BOTH"
 [[dependencies.jerintegration]]
