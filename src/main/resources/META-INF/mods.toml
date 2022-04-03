@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[39,)"
+loaderVersion = "[40,)"
 license = "All rights reserved"
 [[mods]]
 modId = "jerintegration"
@@ -13,7 +13,7 @@ JER Integration for other mod
 [[dependencies.jerintegration]]
     modId = "forge"
     mandatory = true
-    versionRange = "[39,)"
+    versionRange = "[40,)"
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
@@ -23,27 +23,27 @@ JER Integration for other mod
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "jei"
-mandatory = true
-versionRange = "[9.4.1.112,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "jei"
+    mandatory = true
+    versionRange = "[9.5.5.174,)"
+    ordering = "AFTER"
+    side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "jeresources"
-mandatory = true
-versionRange = "[0.14.0.155,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "jeresources"
+    mandatory = true
+    versionRange = "[0.14.1.160,)"
+    ordering = "AFTER"
+    side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "ae2"
-mandatory = false
-versionRange = "[10.0.1,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "ae2"
+    mandatory = false
+    versionRange = "[11.0.0-alpha.3,)"
+    ordering = "AFTER"
+    side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "create"
-mandatory = false
-versionRange = "[0.4d,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "immersiveengineering"
+    mandatory = false
+    versionRange = "[1.18.2-8.0.0-146,)"
+    ordering = "AFTER"
+    side = "BOTH"
 

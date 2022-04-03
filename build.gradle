@@ -46,7 +46,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.03.06-1.18.1'
+    mappings channel: 'parchment', version: '2022.03.13-1.18.2'
     deobfSourceClassifier = getMappings().get()
     runs {
         client {
@@ -92,23 +92,23 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.1-39.1.0'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.0.36'
 
     // implementation fileTree(dir:'lib', include:'*.jar')
 
-    implementation fg.deobf("curse.maven:jei-238222:3670002")                       // JEI (9.4.1.112)
-    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3663200") // JER (0.14.0.155)
+    implementation fg.deobf("curse.maven:jei-238222:3723913")                       // JEI (9.5.5.174)
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3705938") // JER (0.14.1.160)
 
-    implementation fg.deobf("curse.maven:applied-energistics-223794:3615156")
-    // Applied Energistics 2 (10.0.1 [FORGE])
+    implementation fg.deobf("curse.maven:applied-energistics-223794:3729906")       // Applied Energistics 2 (11.0.0-alpha.3)
 
-    implementation fg.deobf("curse.maven:flywheel-486392:3623314")                  // Flywheel (0.6.0)
-    implementation fg.deobf("curse.maven:create-328085:3623348")                    // Create (v0.4d)
+    implementation fg.deobf("curse.maven:immersiveengineering-231951:3721708")      // Immersive Engineering (8.0.0-146)
 
-    implementation fg.deobf("curse.maven:immersiveengineering-231951:3587149")      // Immersive Engineering (7.1.0-145)
+    // Not updated to 1.18.2
+    // implementation fg.deobf("curse.maven:flywheel-486392:3623314")                  // Flywheel (0.6.0)
+    // implementation fg.deobf("curse.maven:create-328085:3623348")                    // Create (v0.4d)
 
-    implementation fg.deobf("curse.maven:mantle-74924:3634761")                     // Mantle (1.8.31)
-    implementation fg.deobf("curse.maven:tinkers-construct-74072:3648309")          // Tinkers' Construct (3.4.1.46)
+    // implementation fg.deobf("curse.maven:mantle-74924:3634761")                     // Mantle (1.8.31)
+    // implementation fg.deobf("curse.maven:tinkers-construct-74072:3648309")          // Tinkers' Construct (3.4.1.46)
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
