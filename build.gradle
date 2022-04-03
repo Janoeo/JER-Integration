@@ -17,7 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
-def majorVersion = 2
+def majorVersion = 3
 def minorVersion = 2
 def buildVersion = 0
 def isExperimental = true
