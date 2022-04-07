@@ -90,6 +90,7 @@ sourceSets {
         java {
             srcDir 'src/main/java'
             srcDir '../1.16.5/src/api/java'
+            srcDir 'src/common/java'
         }
         resources {
             srcDir 'src/main/resources'

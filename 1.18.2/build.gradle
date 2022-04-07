@@ -90,6 +90,7 @@ sourceSets {
         java {
             srcDir 'src/main/java'
             srcDir '../1.16.5/src/api/java'
+            srcDir '../1.18.1/src/common/java'
         }
         resources {
             srcDir 'src/main/resources'
@@ -141,6 +142,7 @@ jar {
 jar.finalizedBy('reobfJar')
 
 task sourcesJar(type: Jar) {
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     from sourceSets.main.allJava
     def archiveName = 'sources-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
@@ -148,6 +150,7 @@ task sourcesJar(type: Jar) {
 }
 
 task deobfJar(type: Jar) {
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
     from sourceSets.main.output
     def archiveName = 'deobf-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)

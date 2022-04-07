@@ -1,7 +1,7 @@
 package fr.alasdiablo.jerintegration.compat;
 
 import fr.alasdiablo.jerintegration.JERIntegration;
-import fr.alasdiablo.jerintegration.api.IJERIntegration;
+import fr.alasdiablo.jerintegration.api.v1.IJERIntegration;
 import fr.alasdiablo.jerintegration.compat.ae2.AppEngWorldGen;
 import fr.alasdiablo.jerintegration.compat.create.CreateWorldGen;
 import fr.alasdiablo.jerintegration.compat.immersiveengineering.ImmersiveEngineeringWorldGen;

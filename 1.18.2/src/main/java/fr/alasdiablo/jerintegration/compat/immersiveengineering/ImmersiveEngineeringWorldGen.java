@@ -3,7 +3,7 @@ package fr.alasdiablo.jerintegration.compat.immersiveengineering;
 import blusunrize.immersiveengineering.common.config.IEServerConfig;
 import blusunrize.immersiveengineering.common.register.IEBlocks;
 import blusunrize.immersiveengineering.common.register.IEItems;
-import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
+import fr.alasdiablo.jerintegration.api.v1.WorldGenIntegration;
 import jeresources.api.IWorldGenRegistry;
 import jeresources.api.conditionals.Conditional;
 import jeresources.api.distributions.DistributionBase;
