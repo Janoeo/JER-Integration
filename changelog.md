@@ -1,3 +1,6 @@
+### 3.2.1
++ Re-enable Create patch
+
 ### 3.2.0
 + Update to 1.18.2
 + Disable Create patch
