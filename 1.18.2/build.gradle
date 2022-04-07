@@ -85,7 +85,22 @@ minecraft {
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir '../1.16.5/src/api/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/generated/resources'
+        }
+    }
+}
+
+processResources {
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
 
 repositories {
     maven { url = 'https://www.cursemaven.com/' }

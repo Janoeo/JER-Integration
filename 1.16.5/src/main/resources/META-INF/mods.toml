@@ -1,0 +1,36 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "All rights reserved"
+[[mods]]
+modId = "jerintegration"
+version = "${file.jarVersion}"
+displayName = "JER Integration"
+credits = "Mezz for JEI, Way2Muchnoise for JER"
+authors = "AlasDiablo"
+description = '''
+JER Integration for other mod
+'''
+[[dependencies.jerintegration]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[36,)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.jerintegration]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.16.5,1.17)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.jerintegration]]
+    modId = "jeresources"
+    mandatory = true
+    versionRange = "[0.12.1.121,)"
+    ordering = "AFTER"
+    side = "BOTH"
+[[dependencies.jerintegration]]
+    modId = "tconstruct"
+    mandatory = false
+    versionRange = "[3.1.0.231,)"
+    ordering = "AFTER"
+    side = "BOTH"

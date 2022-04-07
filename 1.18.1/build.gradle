@@ -1,0 +1,157 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
+        maven { url = 'https://maven.parchmentmc.org' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'eclipse'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'maven-publish'
+
+def majorVersion = 2
+def minorVersion = 2
+def buildVersion = 0
+def isExperimental = true
+version = "${majorVersion}.${minorVersion}.${buildVersion}"
+if (isExperimental) {
+    version += '-experimental'
+}
+
+group = 'fr.alasdiablo.jerintegration'
+archivesBaseName = 'JER-Integration'
+
+def manifestAttributes = [
+        "Specification-Title"     : "JER-Integration",
+        "Specification-Vendor"    : "AlasDiablo",
+        "Specification-Version"   : "1",
+        "Implementation-Title"    : project.name,
+        "Implementation-Version"  : project.jar.archiveVersion,
+        "Implementation-Vendor"   : "AlasDiablo",
+        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+]
+
+def outputFolder = file(rootProject.getRootDir().getPath() + '/output')
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+def deobfSourceClassifier
+
+minecraft {
+    mappings channel: 'parchment', version: '2022.03.06-1.18.1'
+    deobfSourceClassifier = getMappings().get()
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                jerintegration {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                jerintegration {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            args '--mod', 'jerintegration', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            mods {
+                jerintegration {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+            srcDir '../1.16.5/src/api/java'
+        }
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/generated/resources'
+        }
+    }
+}
+
+processResources {
+    setDuplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+}
+
+repositories {
+    maven { url = 'https://www.cursemaven.com/' }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.18.1-39.1.0'
+
+    // implementation fileTree(dir:'lib', include:'*.jar')
+
+    implementation fg.deobf("curse.maven:jei-238222:3670002")                       // JEI (9.4.1.112)
+    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3663200") // JER (0.14.0.155)
+
+    implementation fg.deobf("curse.maven:applied-energistics-223794:3615156")
+    // Applied Energistics 2 (10.0.1 [FORGE])
+
+    implementation fg.deobf("curse.maven:flywheel-486392:3623314")                  // Flywheel (0.6.0)
+    implementation fg.deobf("curse.maven:create-328085:3623348")                    // Create (v0.4d)
+
+    implementation fg.deobf("curse.maven:immersiveengineering-231951:3587149")      // Immersive Engineering (7.1.0-145)
+
+    implementation fg.deobf("curse.maven:mantle-74924:3634761")                     // Mantle (1.8.31)
+    implementation fg.deobf("curse.maven:tinkers-construct-74072:3648309")          // Tinkers' Construct (3.4.1.46)
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+}
+
+jar {
+    manifest.attributes(manifestAttributes)
+    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
+}
+
+jar.finalizedBy('reobfJar')
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    def archiveName = 'sources-' + deobfSourceClassifier
+    archiveClassifier.set(archiveName)
+    destinationDirectory.set(outputFolder)
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    def archiveName = 'deobf-' + deobfSourceClassifier
+    archiveClassifier.set(archiveName)
+    manifest.attributes(manifestAttributes)
+    destinationDirectory.set(outputFolder)
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives deobfJar
+}
