@@ -18,7 +18,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
 def majorVersion = 2
-def minorVersion = 2
+def minorVersion = 3
 def buildVersion = 0
 def isExperimental = true
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
