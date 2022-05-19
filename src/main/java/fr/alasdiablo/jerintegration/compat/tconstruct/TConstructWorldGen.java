@@ -6,5 +6,6 @@ import jeresources.api.IWorldGenRegistry;
 public class TConstructWorldGen extends WorldGenIntegration {
     @Override
     public void registerWorldGen(IWorldGenRegistry registry) {
+        // TODO
     }
 }

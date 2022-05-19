@@ -23,27 +23,33 @@ JER Integration for other mod
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "jei"
-mandatory = true
-versionRange = "[9.4.1.112,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "jei"
+    mandatory = true
+    versionRange = "[9.4.1.112,)"
+    ordering = "AFTER"
+    side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "jeresources"
-mandatory = true
-versionRange = "[0.14.0.155,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "jeresources"
+    mandatory = true
+    versionRange = "[0.14.0.155,)"
+    ordering = "AFTER"
+    side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "ae2"
-mandatory = false
-versionRange = "[10.0.1,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "ae2"
+    mandatory = false
+    versionRange = "[10.0.1,)"
+    ordering = "AFTER"
+    side = "BOTH"
 [[dependencies.jerintegration]]
-modId = "create"
-mandatory = false
-versionRange = "[0.4d,)"
-ordering = "AFTER"
-side = "BOTH"
+    modId = "create"
+    mandatory = false
+    versionRange = "[0.4d,)"
+    ordering = "AFTER"
+    side = "BOTH"
+[[dependencies.jerintegration]]
+    modId = "immersiveengineering"
+    mandatory = false
+    versionRange = "[1.18.1-7.1.0-145,)"
+    ordering = "AFTER"
+    side = "BOTH"
 

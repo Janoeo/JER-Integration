@@ -18,7 +18,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
 def majorVersion = 2
-def minorVersion = 2
+def minorVersion = 3
 def buildVersion = 0
 def isExperimental = true
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
@@ -99,8 +99,7 @@ dependencies {
     implementation fg.deobf("curse.maven:jei-238222:3670002")                       // JEI (9.4.1.112)
     implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3663200") // JER (0.14.0.155)
 
-    implementation fg.deobf("curse.maven:applied-energistics-223794:3615156")
-    // Applied Energistics 2 (10.0.1 [FORGE])
+    implementation fg.deobf("curse.maven:applied-energistics-223794:3615156")       // Applied Energistics 2 (10.0.1)
 
     implementation fg.deobf("curse.maven:flywheel-486392:3623314")                  // Flywheel (0.6.0)
     implementation fg.deobf("curse.maven:create-328085:3623348")                    // Create (v0.4d)
