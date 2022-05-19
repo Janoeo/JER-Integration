@@ -1,3 +1,9 @@
+### 3.3.0
++ Fix client missing data when joining a server
++ Fix Immersive Engineering missing data
++ Add Tinkers' Construct
++ Add Mekanism base code (not working for now)
+
 ### 3.2.1
 + Re-enable Create patch
 
@@ -5,6 +11,10 @@
 + Update to 1.18.2
 + Disable Create patch
 + Add a patch for immersive
+
+### 2.3.0
++ Add Immersive Engineering
++ Update loading process
 
 ### 2.2.0
 

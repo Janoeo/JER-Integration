@@ -46,4 +46,11 @@ JER Integration for other mod
     versionRange = "[1.18.2-8.0.0-146,)"
     ordering = "AFTER"
     side = "BOTH"
+[[dependencies.jerintegration]]
+    modId = "tconstruct"
+    mandatory = false
+    versionRange = "[3.5.0.17,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
 

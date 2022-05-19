@@ -23,17 +23,21 @@ public class ImmersiveEngineeringWorldGen extends WorldGenIntegration {
             if (ore != null && ore.get() != null) {
                 DistributionBase distribution;
 
-                try {
-                    if (oreConfig.distribution.get() == IEServerConfig.Ores.OreDistribution.UNIFORM) {
-                        distribution = new DistributionSquare(
-                                oreConfig.veinsPerChunk.get(), oreConfig.veinSize.get(), oreConfig.minY.get(), oreConfig.maxY.get());
-                    } else {
-                        int range = (oreConfig.maxY.get() - oreConfig.minY.get()) / 2;
-                        int midY  = range + oreConfig.minY.get();
-                        distribution = new DistributionTriangular(oreConfig.veinsPerChunk.get(), oreConfig.veinSize.get(), midY, range);
-                    }
-                } catch (NullPointerException ignored) {
-                    distribution = new DistributionSquare(oreConfig.veinsPerChunk.get(), oreConfig.veinSize.get(), oreConfig.minY.get(), oreConfig.maxY.get());
+                if (oreConfig.distribution.getOrDefault() == IEServerConfig.Ores.OreDistribution.UNIFORM) {
+                    distribution = new DistributionSquare(
+                            oreConfig.veinsPerChunk.getOrDefault(),
+                            oreConfig.veinSize.getOrDefault(),
+                            oreConfig.minY.getOrDefault(),
+                            oreConfig.maxY.getOrDefault()
+                    );
+                } else {
+                    int range = (oreConfig.maxY.getOrDefault() - oreConfig.minY.getOrDefault()) / 2;
+                    int midY  = range + oreConfig.minY.getOrDefault();
+                    distribution = new DistributionTriangular(
+                            oreConfig.veinsPerChunk.getOrDefault(),
+                            oreConfig.veinSize.getOrDefault(),
+                            midY, range
+                    );
                 }
 
                 registry.register(
@@ -47,7 +51,6 @@ public class ImmersiveEngineeringWorldGen extends WorldGenIntegration {
                         )
                 );
             }
-
         });
     }
 }

@@ -18,8 +18,8 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
 def majorVersion = 3
-def minorVersion = 2
-def buildVersion = 1
+def minorVersion = 3
+def buildVersion = 0
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -89,33 +89,31 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven { url = 'https://www.cursemaven.com/' }
-    maven {
-        url "https://maven.tterrag.com/"
-    }
+    maven { url 'https://maven.tterrag.com/' }
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.36'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.16'
 
     implementation fileTree(dir:'lib', include:'*.jar')
 
-    implementation fg.deobf("curse.maven:jei-238222:3723913")                       // JEI (9.5.5.174)
-    implementation fg.deobf("curse.maven:just-enough-resources-jer-240630:3705938") // JER (0.14.1.160)
+    implementation fg.deobf('curse.maven:jei-238222:3758750')                       // JEI (9.7.0.193)
+    implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3705938') // JER (0.14.1.160)
 
-    implementation fg.deobf("curse.maven:applied-energistics-223794:3729906")       // Applied Energistics 2 (11.0.0-alpha.3)
+    implementation fg.deobf('curse.maven:applied-energistics-223794:3729906')       // Applied Energistics 2 (11.0.0-alpha.3)
 
-    implementation fg.deobf("curse.maven:immersiveengineering-231951:3721708")      // Immersive Engineering (8.0.0-146)
+    implementation fg.deobf('curse.maven:immersiveengineering-231951:3721708')      // Immersive Engineering (8.0.0-146)
 
-    implementation fg.deobf("curse.maven:flywheel-486392:3737402")                  // Flywheel (0.6.2)
-    implementation fg.deobf("curse.maven:create-328085:3737418")                    // Create (v0.4.1)
-    implementation fg.deobf("com.tterrag.registrate:Registrate:MC1.18.2-1.0.25")    // Create source dependencies
+    implementation fg.deobf('curse.maven:flywheel-486392:3737402')                  // Flywheel (0.6.2)
+    implementation fg.deobf('curse.maven:create-328085:3737418')                    // Create (v0.4.1)
+    implementation fg.deobf('com.tterrag.registrate:Registrate:MC1.18.2-1.0.25')    // Create source dependencies
 
-    // Not updated to 1.18.2
+    implementation fg.deobf('curse.maven:mekanism-268560:3743835')                  // Mekanism (10.2.0.459)
 
-    // implementation fg.deobf("curse.maven:mantle-74924:3634761")                     // Mantle (1.8.31)
-    // implementation fg.deobf("curse.maven:tinkers-construct-74072:3648309")          // Tinkers' Construct (3.4.1.46)
+    implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
+    implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 jar {
