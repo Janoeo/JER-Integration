@@ -1,3 +1,6 @@
+### 3.3.1
++ Finished and enable Mekanism patch
+
 ### 3.3.0
 + Fix client missing data when joining a server
 + Fix Immersive Engineering missing data
