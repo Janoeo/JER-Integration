@@ -1,3 +1,7 @@
+### 3.3.2
++ Update create ([#8](https://github.com/Janoeo/JER-Integration/pull/8))
++ Add config file to manually disable mod
+
 ### 3.3.1
 + Finished and enable Mekanism patch
 
