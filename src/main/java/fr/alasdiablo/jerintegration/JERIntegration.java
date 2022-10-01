@@ -37,7 +37,7 @@ public class JERIntegration {
             CONFIG = configPair.getLeft();
         }
         public static class Config {
-            public final ForgeConfigSpec.BooleanValue AE2;
+            public final ForgeConfigSpec.BooleanValue RANDOMITE;
             public final ForgeConfigSpec.BooleanValue CREATE;
             public final ForgeConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
             public final ForgeConfigSpec.BooleanValue TINKERS_CONSTRUCT;
@@ -45,7 +45,7 @@ public class JERIntegration {
             public Config(ForgeConfigSpec.@NotNull Builder builder) {
                 builder.comment("Jer Integration override options").push("jer-integration");
 
-                AE2 = builder.comment("Enable / Disable patch for Applied Energistics 2").define("ae2", true);
+                RANDOMITE = builder.comment("Enable / Disable patch for Randomite Classic").define("randomite", true);
 
                 CREATE = builder.comment("Enable / Disable patch for Create").define("create", true);
 
@@ -59,6 +59,7 @@ public class JERIntegration {
     }
 
     public static class Compat {
+        public static boolean RANDOMITE             = MOD_LIST.isLoaded("randomite");
         public static boolean CREATE                = MOD_LIST.isLoaded("create");
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");

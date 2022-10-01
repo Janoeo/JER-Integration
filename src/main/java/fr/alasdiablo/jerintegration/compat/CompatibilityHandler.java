@@ -4,6 +4,7 @@ import fr.alasdiablo.jerintegration.JERIntegration;
 import fr.alasdiablo.jerintegration.compat.create.CreateWorldGen;
 import fr.alasdiablo.jerintegration.compat.immersiveengineering.ImmersiveEngineeringWorldGen;
 import fr.alasdiablo.jerintegration.compat.mekanism.MekanismWorldGen;
+import fr.alasdiablo.jerintegration.compat.randomite.RandomiteWorldGen;
 import fr.alasdiablo.jerintegration.compat.tconstruct.TConstructWorldGen;
 import jeresources.compatibility.api.JERAPI;
 import org.jetbrains.annotations.NotNull;
@@ -51,6 +52,16 @@ public class CompatibilityHandler {
                 new MekanismWorldGen().register(api);
             } catch (Exception e) {
                 JERIntegration.LOGGER.info("Failing to apply patch for Mekanism");
+                loggerError(e);
+            }
+        }
+
+        if (JERIntegration.Compat.RANDOMITE && JERIntegration.DisableConfig.CONFIG.RANDOMITE.get()) {
+            try {
+                JERIntegration.LOGGER.info("Applying Randomite patch");
+                new RandomiteWorldGen().register(api);
+            } catch (Exception e) {
+                JERIntegration.LOGGER.info("Failing to apply patch for Randomite");
                 loggerError(e);
             }
         }

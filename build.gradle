@@ -19,7 +19,7 @@ apply plugin: 'maven-publish'
 
 def majorVersion = 4
 def minorVersion = 3
-def buildVersion = 0
+def buildVersion = 1
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -114,14 +114,17 @@ dependencies {
     implementation fg.deobf('curse.maven:jei-238222:3969039')                       // JEI (11.3.0.262)
     implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3951643') // JER (1.1.0.179)
 
-    implementation fg.deobf('curse.maven:applied-energistics-223794:4013348')       // Applied Energistics 2 (12.7.0)
-
     implementation fg.deobf('curse.maven:immersiveengineering-231951:3963698')      // Immersive Engineering (9.0.0-153)
 
     implementation fg.deobf('curse.maven:create-328085:4011414')                    // Create (v0.5.0f)
-    compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.19-1.1.5')     // Create source dependencies
+    compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.19-1.1.5')          // Create source dependencies
 
     implementation fg.deobf('curse.maven:mekanism-268560:3954410')                  // Mekanism (10.3.3.470)
+
+    implementation fg.deobf('curse.maven:extreme-reactors-250277:3927548')          // Extreme Reactors (2.0.54)
+    implementation fg.deobf('curse.maven:zerocore-247921:3927546')                  // Zero Core (2.1.25)
+
+    implementation fg.deobf('curse.maven:randomite-classic-375134:3905205')         // Randomite Classic (v1.1.2)
 
     // implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
     // implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)

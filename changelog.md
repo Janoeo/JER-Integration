@@ -1,3 +1,6 @@
+### 4.3.1
++ Add Randomite Classic
+
 ### 4.3.0
 + Update to 1.19.2
 
