@@ -20,7 +20,7 @@ public abstract class MobIntegration implements IJERIntegration {
     public void registerDungeon(IDungeonRegistry registry) {}
 
     @Override
-    public void register(@NotNull IJERAPI jerApi) {
+    public void register(@NotNull IJERAPI jerApi) throws NoSuchFieldException, NoSuchMethodException {
         registerMob(jerApi.getMobRegistry());
     }
 }

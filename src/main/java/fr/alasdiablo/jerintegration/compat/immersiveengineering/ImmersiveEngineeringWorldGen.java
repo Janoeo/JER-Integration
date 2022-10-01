@@ -10,6 +10,8 @@ import jeresources.api.distributions.DistributionBase;
 import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
+import jeresources.compatibility.CompatBase;
+import jeresources.entry.WorldGenEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
@@ -23,23 +25,23 @@ public class ImmersiveEngineeringWorldGen extends WorldGenIntegration {
             if (ore != null && ore.get() != null) {
                 DistributionBase distribution;
 
-                if (oreConfig.distribution.getOrDefault() == IEServerConfig.Ores.OreDistribution.UNIFORM) {
+                if ((IEServerConfig.CONFIG_SPEC.isLoaded() ? oreConfig.distribution.get() : oreConfig.distribution.getDefault())
+                        == IEServerConfig.Ores.OreDistribution.UNIFORM) {
                     distribution = new DistributionSquare(
-                            oreConfig.veinsPerChunk.getOrDefault(),
-                            oreConfig.veinSize.getOrDefault(),
-                            oreConfig.minY.getOrDefault(),
-                            oreConfig.maxY.getOrDefault()
+                            IEServerConfig.getOrDefault(oreConfig.veinsPerChunk),
+                            IEServerConfig.getOrDefault(oreConfig.veinSize),
+                            IEServerConfig.getOrDefault(oreConfig.minY),
+                            IEServerConfig.getOrDefault(oreConfig.maxY)
                     );
                 } else {
-                    int range = (oreConfig.maxY.getOrDefault() - oreConfig.minY.getOrDefault()) / 2;
-                    int midY  = range + oreConfig.minY.getOrDefault();
+                    int range = (IEServerConfig.getOrDefault(oreConfig.maxY) - IEServerConfig.getOrDefault(oreConfig.minY)) / 2;
+                    int midY  = range + IEServerConfig.getOrDefault(oreConfig.minY);
                     distribution = new DistributionTriangular(
-                            oreConfig.veinsPerChunk.getOrDefault(),
-                            oreConfig.veinSize.getOrDefault(),
+                            IEServerConfig.getOrDefault(oreConfig.veinsPerChunk),
+                            IEServerConfig.getOrDefault(oreConfig.veinSize),
                             midY, range
                     );
                 }
-
                 registry.register(
                         new ItemStack(ore),
                         distribution,

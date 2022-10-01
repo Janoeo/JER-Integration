@@ -18,16 +18,14 @@ public class JERIntegration {
     public static final  String               MOD_ID      = "jerintegration";
     public static final  Logger               LOGGER      = LogManager.getLogger(JERIntegration.MOD_ID);
     private static final ModList              MOD_LIST    = ModList.get();
-    public final         CompatibilityHandler compatibilityHandler;
 
     public JERIntegration() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DisableConfig.CONFIG_SPEC);
-        this.compatibilityHandler = new CompatibilityHandler();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
     private void setup(final FMLCommonSetupEvent commonSetupEvent) {
-        this.compatibilityHandler.init();
+        CompatibilityHandler.init();
     }
 
     public static class DisableConfig {
@@ -61,7 +59,6 @@ public class JERIntegration {
     }
 
     public static class Compat {
-        public static boolean AE2                   = MOD_LIST.isLoaded("ae2");
         public static boolean CREATE                = MOD_LIST.isLoaded("create");
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");

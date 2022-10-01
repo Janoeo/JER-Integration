@@ -20,7 +20,7 @@ public abstract class DungeonIntegration implements IJERIntegration {
     public void registerWorldGen(IWorldGenRegistry registry) {}
 
     @Override
-    public void register(@NotNull IJERAPI jerApi) {
+    public void register(@NotNull IJERAPI jerApi) throws NoSuchFieldException, NoSuchMethodException {
         registerDungeon(jerApi.getDungeonRegistry());
     }
 }

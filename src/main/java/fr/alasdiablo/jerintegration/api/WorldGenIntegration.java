@@ -20,7 +20,7 @@ public abstract class WorldGenIntegration implements IJERIntegration {
     public void registerDungeon(IDungeonRegistry registry) {}
 
     @Override
-    public void register(@NotNull IJERAPI jerApi) {
+    public void register(@NotNull IJERAPI jerApi) throws IllegalStateException, NoSuchFieldException, NoSuchMethodException, NoClassDefFoundError {
         registerWorldGen(jerApi.getWorldGenRegistry());
     }
 }

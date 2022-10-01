@@ -1,6 +1,6 @@
 modLoader = "javafml"
-loaderVersion = "[40,)"
-license = "All rights reserved"
+loaderVersion = "[43,)"
+license = "MIT"
 [[mods]]
 modId = "jerintegration"
 version = "${file.jarVersion}"
@@ -13,20 +13,20 @@ JER Integration for other mod
 [[dependencies.jerintegration]]
     modId = "forge"
     mandatory = true
-    versionRange = "[40,)"
+    versionRange = "[43,)"
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
     modId = "minecraft"
     mandatory = true
-    versionRange = "[1.18.1,1.19)"
+    versionRange = "[1.19.2,1.20)"
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
     modId = "jei"
     mandatory = true
     versionRange = "[9.5.5.174,)"
-    ordering = "AFTER"
+    ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
     modId = "jeresources"

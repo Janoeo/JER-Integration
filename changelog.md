@@ -1,3 +1,6 @@
+### 4.3.0
++ Update to 1.19.2
+
 ### 3.3.2
 + Update create ([#8](https://github.com/Janoeo/JER-Integration/pull/8))
 + Add config file to manually disable mod

@@ -17,9 +17,9 @@ apply plugin: 'eclipse'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
-def majorVersion = 3
+def majorVersion = 4
 def minorVersion = 3
-def buildVersion = 2
+def buildVersion = 0
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -46,13 +46,14 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.07.10-1.18.2'
+    mappings channel: 'parchment', version: '2022.09.04-1.19.2'
     deobfSourceClassifier = getMappings().get()
     runs {
         client {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'jerintegration'
             mods {
                 jerintegration {
                     source sourceSets.main
@@ -64,6 +65,19 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'jerintegration'
+            mods {
+                jerintegration {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'jerintegration'
             mods {
                 jerintegration {
                     source sourceSets.main
@@ -93,25 +107,24 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.60'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.32'
 
     implementation fileTree(dir:'lib', include:'*.jar')
 
-    implementation fg.deobf('curse.maven:jei-238222:3758750')                       // JEI (9.7.0.193)
-    implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3705938') // JER (0.14.1.160)
+    implementation fg.deobf('curse.maven:jei-238222:3969039')                       // JEI (11.3.0.262)
+    implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3951643') // JER (1.1.0.179)
 
-    implementation fg.deobf('curse.maven:applied-energistics-223794:3729906')       // Applied Energistics 2 (11.0.0-alpha.3)
+    implementation fg.deobf('curse.maven:applied-energistics-223794:4013348')       // Applied Energistics 2 (12.7.0)
 
-    implementation fg.deobf('curse.maven:immersiveengineering-231951:3721708')      // Immersive Engineering (8.0.0-146)
+    implementation fg.deobf('curse.maven:immersiveengineering-231951:3963698')      // Immersive Engineering (9.0.0-153)
 
-    implementation fg.deobf('curse.maven:flywheel-486392:3934664')                  // Flywheel (0.6.2)
-    implementation fg.deobf('curse.maven:create-328085:3934676')                    // Create (v0.4.1)
-    compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.18.2-1.1.3')    // Create source dependencies
+    implementation fg.deobf('curse.maven:create-328085:4011414')                    // Create (v0.5.0f)
+    compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.19-1.1.5')     // Create source dependencies
 
-    implementation fg.deobf('curse.maven:mekanism-268560:3743835')                  // Mekanism (10.2.0.459)
+    implementation fg.deobf('curse.maven:mekanism-268560:3954410')                  // Mekanism (10.3.3.470)
 
-    implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
-    implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)
+    // implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
+    // implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
@@ -136,6 +149,10 @@ task deobfJar(type: Jar) {
     archiveClassifier.set(archiveName)
     manifest.attributes(manifestAttributes)
     destinationDirectory.set(outputFolder)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
 }
 
 artifacts {
