@@ -54,8 +54,7 @@
 
 + Optionals / Compatibles
   
-  + [Tinkers Construct 3](https://www.curseforge.com/minecraft/mc-mods/tinkers-construct) (Ore generation / since 1.0.0)
-  + [Mekanism](https://www.curseforge.com/minecraft/mc-mods/mekanism) (Ore generation / since 1.1.0)
+  + Check [JER Integration](https://docs.alasdiablo.fr/jer-integration/) online documentation
 
 ## Contributing
 
