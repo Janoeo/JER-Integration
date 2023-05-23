@@ -18,8 +18,8 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
 def majorVersion = 4
-def minorVersion = 3
-def buildVersion = 1
+def minorVersion = 4
+def buildVersion = 0
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -46,7 +46,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.09.04-1.19.2'
+    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
     deobfSourceClassifier = getMappings().get()
     runs {
         client {
@@ -107,22 +107,22 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.1.32'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.11'
 
     implementation fileTree(dir:'lib', include:'*.jar')
 
-    implementation fg.deobf('curse.maven:jei-238222:3969039')                       // JEI (11.3.0.262)
+    implementation fg.deobf('curse.maven:jei-238222:4494410')                       // JEI (11.6.0.1015)
     implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3951643') // JER (1.1.0.179)
 
-    implementation fg.deobf('curse.maven:immersiveengineering-231951:3963698')      // Immersive Engineering (9.0.0-153)
+    implementation fg.deobf('curse.maven:immersive-engineering-231951:4535935')     // Immersive Engineering (9.2.2-165)
 
-    implementation fg.deobf('curse.maven:create-328085:4011414')                    // Create (v0.5.0f)
+    implementation fg.deobf('curse.maven:create-328085:4547147')                    // Create (v0.5.1a)
     compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.19-1.1.5')          // Create source dependencies
 
-    implementation fg.deobf('curse.maven:mekanism-268560:3954410')                  // Mekanism (10.3.3.470)
+    implementation fg.deobf('curse.maven:mekanism-268560:4385637')                  // Mekanism (10.3.8.477)
 
-    implementation fg.deobf('curse.maven:extreme-reactors-250277:3927548')          // Extreme Reactors (2.0.54)
-    implementation fg.deobf('curse.maven:zerocore-247921:3927546')                  // Zero Core (2.1.25)
+    implementation fg.deobf('curse.maven:extreme-reactors-250277:4526683')          // Extreme Reactors (2.0.63)
+    implementation fg.deobf('curse.maven:zerocore-247921:4526681')                  // Zero Core (2.1.34)
 
     implementation fg.deobf('curse.maven:randomite-classic-375134:3905205')         // Randomite Classic (v1.1.2)
 
@@ -141,14 +141,14 @@ jar {
 
 jar.finalizedBy('reobfJar')
 
-task sourcesJar(type: Jar) {
+tasks.register('sourcesJar', Jar) {
     from sourceSets.main.allJava
     def archiveName = 'sources-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
     destinationDirectory.set(outputFolder)
 }
 
-task deobfJar(type: Jar) {
+tasks.register('deobfJar', Jar) {
     from sourceSets.main.output
     def archiveName = 'deobf-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
