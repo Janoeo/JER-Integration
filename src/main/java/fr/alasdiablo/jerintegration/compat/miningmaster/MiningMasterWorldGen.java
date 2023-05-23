@@ -13,35 +13,6 @@ import org.infernalstudios.miningmaster.init.MMItems;
 import org.jetbrains.annotations.NotNull;
 
 public class MiningMasterWorldGen extends WorldGenIntegration {
-    @Override
-    public void registerWorldGen(@NotNull final IWorldGenRegistry registry) {
-        registerStoneType(registry);
-        registerDeepslateType(registry);
-
-        registry.register(
-                new ItemStack(MMBlocks.HEART_RHODONITE_ORE.get()),
-                new DistributionTriangular(1, 1, 64, 64),
-                new Restriction(DimensionRestriction.NETHER),
-                true,
-                new LootDrop(new ItemStack(MMItems.HEART_RHODONITE.get()), 1, 1, Conditional.affectedByFortune)
-        );
-
-        registry.register(
-                new ItemStack(MMBlocks.KINETIC_OPAL_ORE.get()),
-                new DistributionTriangular(1, 1, 64, 64),
-                new Restriction(DimensionRestriction.NETHER),
-                true,
-                new LootDrop(new ItemStack(MMItems.KINETIC_OPAL.get()), 1, 1, Conditional.affectedByFortune)
-        );
-
-        registry.register(
-                new ItemStack(MMBlocks.POWER_PYRITE_ORE.get()),
-                new DistributionTriangular(1, 1, 64, 64),
-                new Restriction(DimensionRestriction.NETHER),
-                true,
-                new LootDrop(new ItemStack(MMItems.POWER_PYRITE.get()), 1, 1, Conditional.affectedByFortune)
-        );
-    }
     private void registerStoneType(@NotNull final IWorldGenRegistry registry) {
         registry.register(
                 new ItemStack(MMBlocks.DIVE_AQUAMARINE_ORE.get()),
@@ -187,6 +158,36 @@ public class MiningMasterWorldGen extends WorldGenIntegration {
                 new Restriction(DimensionRestriction.OVERWORLD),
                 true,
                 new LootDrop(new ItemStack(MMItems.UNBREAKING_IOLITE.get()), 1, 1, Conditional.affectedByFortune)
+        );
+    }
+
+    @Override
+    public void registerWorldGen(@NotNull final IWorldGenRegistry registry) {
+        this.registerStoneType(registry);
+        this.registerDeepslateType(registry);
+
+        registry.register(
+                new ItemStack(MMBlocks.HEART_RHODONITE_ORE.get()),
+                new DistributionTriangular(1, 1, 64, 64),
+                new Restriction(DimensionRestriction.NETHER),
+                true,
+                new LootDrop(new ItemStack(MMItems.HEART_RHODONITE.get()), 1, 1, Conditional.affectedByFortune)
+        );
+
+        registry.register(
+                new ItemStack(MMBlocks.KINETIC_OPAL_ORE.get()),
+                new DistributionTriangular(1, 1, 64, 64),
+                new Restriction(DimensionRestriction.NETHER),
+                true,
+                new LootDrop(new ItemStack(MMItems.KINETIC_OPAL.get()), 1, 1, Conditional.affectedByFortune)
+        );
+
+        registry.register(
+                new ItemStack(MMBlocks.POWER_PYRITE_ORE.get()),
+                new DistributionTriangular(1, 1, 64, 64),
+                new Restriction(DimensionRestriction.NETHER),
+                true,
+                new LootDrop(new ItemStack(MMItems.POWER_PYRITE.get()), 1, 1, Conditional.affectedByFortune)
         );
     }
 }
