@@ -1,3 +1,12 @@
+### 4.4.0
++ Update
+  + Forge (43.2.11)
+  + JEI (11.6.0.1015)
+  + Immersive Engineering (9.2.2-165)
+  + Mekanism (10.3.8.477)
+  + Extreme Reactors (2.0.63)
+  + Create (v0.5.1a) ([#12](https://github.com/Janoeo/JER-Integration/pull/12))
+
 ### 4.3.1
 + Add Randomite Classic
 
