@@ -116,7 +116,7 @@ dependencies {
 
     implementation fg.deobf('curse.maven:immersiveengineering-231951:3963698')      // Immersive Engineering (9.0.0-153)
 
-    implementation fg.deobf('curse.maven:create-328085:4011414')                    // Create (v0.5.0f)
+    implementation fg.deobf('curse.maven:create-328085:4547147')                    // Create (v0.5.1a)
     compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.19-1.1.5')          // Create source dependencies
 
     implementation fg.deobf('curse.maven:mekanism-268560:3954410')                  // Mekanism (10.3.3.470)
