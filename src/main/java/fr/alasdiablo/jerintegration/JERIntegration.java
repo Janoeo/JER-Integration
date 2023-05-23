@@ -42,6 +42,8 @@ public class JERIntegration {
             public final ForgeConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
             public final ForgeConfigSpec.BooleanValue TINKERS_CONSTRUCT;
             public final ForgeConfigSpec.BooleanValue MEKANISM;
+
+            public final ForgeConfigSpec.BooleanValue MINING_MASTER;
             public Config(ForgeConfigSpec.@NotNull Builder builder) {
                 builder.comment("Jer Integration override options").push("jer-integration");
 
@@ -54,6 +56,8 @@ public class JERIntegration {
                 TINKERS_CONSTRUCT = builder.comment("Enable / Disable patch for Tinkers' Construct").define("tconstruct", true);
 
                 MEKANISM = builder.comment("Enable / Disable patch for Mekanism").define("mekanism", true);
+
+                MINING_MASTER = builder.comment("Enable / Disable patch for Mining Master").define("miningmaster", true);
             }
         }
     }
@@ -64,5 +68,7 @@ public class JERIntegration {
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");
         public static boolean MEKANISM              = MOD_LIST.isLoaded("mekanism");
+
+        public static boolean MINING_MASTER              = MOD_LIST.isLoaded("miningmaster");
     }
 }
