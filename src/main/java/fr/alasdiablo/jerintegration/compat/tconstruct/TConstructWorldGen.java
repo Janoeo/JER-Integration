@@ -2,7 +2,6 @@ package fr.alasdiablo.jerintegration.compat.tconstruct;
 
 import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
 import jeresources.api.IWorldGenRegistry;
-import jeresources.compatibility.CompatBase;
 //import jeresources.api.distributions.DistributionBase;
 //import jeresources.api.distributions.DistributionHelpers;
 //import jeresources.api.distributions.DistributionSquare;
@@ -15,7 +14,7 @@ import jeresources.compatibility.CompatBase;
 
 public class TConstructWorldGen extends WorldGenIntegration {
     @Override
-    public void registerWorldGen(IWorldGenRegistry registry){
+    public void registerWorldGen(IWorldGenRegistry registry) {
 //        if (Config.COMMON.generateCobalt.get()) {
 //            final DistributionBase distributionSmallOre = new DistributionSquare( // COBALT_ORE_FEATURE_SMALL
 //                Config.COMMON.veinCountCobalt.get() / 2,

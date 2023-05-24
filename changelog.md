@@ -1,4 +1,6 @@
 ### 4.4.0
++ Add Support
+  + Mining Master (4.0.0)
 + Update
   + Forge (43.2.11)
   + JEI (11.6.0.1015)

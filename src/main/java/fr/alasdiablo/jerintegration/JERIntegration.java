@@ -15,9 +15,9 @@ import org.jetbrains.annotations.NotNull;
 
 @Mod(JERIntegration.MOD_ID)
 public class JERIntegration {
-    public static final  String               MOD_ID      = "jerintegration";
-    public static final  Logger               LOGGER      = LogManager.getLogger(JERIntegration.MOD_ID);
-    private static final ModList              MOD_LIST    = ModList.get();
+    public static final  String  MOD_ID   = "jerintegration";
+    public static final  Logger  LOGGER   = LogManager.getLogger(JERIntegration.MOD_ID);
+    private static final ModList MOD_LIST = ModList.get();
 
     public JERIntegration() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DisableConfig.CONFIG_SPEC);
@@ -29,21 +29,23 @@ public class JERIntegration {
     }
 
     public static class DisableConfig {
-        public static final ForgeConfigSpec CONFIG_SPEC;
+        public static final ForgeConfigSpec      CONFIG_SPEC;
         public static final DisableConfig.Config CONFIG;
+
         static {
             Pair<Config, ForgeConfigSpec> configPair = new ForgeConfigSpec.Builder().configure(DisableConfig.Config::new);
             CONFIG_SPEC = configPair.getRight();
-            CONFIG = configPair.getLeft();
+            CONFIG      = configPair.getLeft();
         }
+
         public static class Config {
             public final ForgeConfigSpec.BooleanValue RANDOMITE;
             public final ForgeConfigSpec.BooleanValue CREATE;
             public final ForgeConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
             public final ForgeConfigSpec.BooleanValue TINKERS_CONSTRUCT;
             public final ForgeConfigSpec.BooleanValue MEKANISM;
-
             public final ForgeConfigSpec.BooleanValue MINING_MASTER;
+
             public Config(ForgeConfigSpec.@NotNull Builder builder) {
                 builder.comment("Jer Integration override options").push("jer-integration");
 
@@ -68,7 +70,6 @@ public class JERIntegration {
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");
         public static boolean MEKANISM              = MOD_LIST.isLoaded("mekanism");
-
-        public static boolean MINING_MASTER              = MOD_LIST.isLoaded("miningmaster");
+        public static boolean MINING_MASTER = MOD_LIST.isLoaded("miningmaster");
     }
 }

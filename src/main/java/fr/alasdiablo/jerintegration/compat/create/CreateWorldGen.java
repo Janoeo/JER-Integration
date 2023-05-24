@@ -1,17 +1,16 @@
 package fr.alasdiablo.jerintegration.compat.create;
 
- import com.simibubi.create.AllBlocks;
- import com.simibubi.create.AllItems;
- import com.simibubi.create.infrastructure.config.AllConfigs;
-
- import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
- import jeresources.api.IWorldGenRegistry;
- import jeresources.api.conditionals.Conditional;
- import jeresources.api.distributions.DistributionSquare;
- import jeresources.api.drop.LootDrop;
- import net.minecraft.world.item.ItemStack;
- import net.minecraftforge.common.ForgeConfigSpec;
- import org.jetbrains.annotations.NotNull;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.infrastructure.config.AllConfigs;
+import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
+import jeresources.api.IWorldGenRegistry;
+import jeresources.api.conditionals.Conditional;
+import jeresources.api.distributions.DistributionSquare;
+import jeresources.api.drop.LootDrop;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.ForgeConfigSpec;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;

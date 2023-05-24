@@ -80,7 +80,7 @@ public class CompatibilityHandler {
 
     private static void loggerError(@NotNull Exception e) {
         StringWriter message = new StringWriter();
-        PrintWriter writer = new PrintWriter(message);
+        PrintWriter  writer  = new PrintWriter(message);
         e.printStackTrace(writer);
         JERIntegration.LOGGER.debug(message);
     }

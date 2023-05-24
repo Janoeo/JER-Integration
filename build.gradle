@@ -126,10 +126,10 @@ dependencies {
 
     implementation fg.deobf('curse.maven:randomite-classic-375134:3905205')         // Randomite Classic (v1.1.2)
 
+    implementation fg.deobf("curse.maven:mining-master-534956:4041440")             // Mining Master (4.0.0)
+
     // implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
     // implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)
-
-    implementation fg.deobf("curse.maven:mining-master-534956:4041440") // Mining Master (4.0.0)
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

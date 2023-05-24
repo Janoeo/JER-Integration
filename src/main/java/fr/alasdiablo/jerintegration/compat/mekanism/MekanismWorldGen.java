@@ -8,8 +8,6 @@ import jeresources.api.distributions.DistributionBase;
 import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
-import jeresources.compatibility.CompatBase;
-import jeresources.entry.WorldGenEntry;
 import mekanism.common.config.MekanismConfig;
 import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.registries.MekanismItems;
@@ -49,7 +47,8 @@ public class MekanismWorldGen extends WorldGenIntegration {
                                 oreVeinConfig.range().maxInclusive().resolveY(fakeContext)
                         );
                     } else {
-                        int range = (oreVeinConfig.range().maxInclusive().resolveY(fakeContext) - oreVeinConfig.range().minInclusive().resolveY(fakeContext)) / 2;
+                        int range = (oreVeinConfig.range().maxInclusive().resolveY(fakeContext) - oreVeinConfig.range().minInclusive().resolveY(fakeContext)) /
+                                2;
                         int midY  = range + oreVeinConfig.range().minInclusive().resolveY(fakeContext);
                         distribution = new DistributionTriangular(
                                 oreVeinConfig.perChunk().getAsInt(),

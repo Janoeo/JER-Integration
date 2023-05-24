@@ -10,8 +10,6 @@ import jeresources.api.distributions.DistributionBase;
 import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
-import jeresources.compatibility.CompatBase;
-import jeresources.entry.WorldGenEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
