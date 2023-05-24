@@ -4,6 +4,7 @@ import fr.alasdiablo.jerintegration.JERIntegration;
 import fr.alasdiablo.jerintegration.compat.create.CreateWorldGen;
 import fr.alasdiablo.jerintegration.compat.immersiveengineering.ImmersiveEngineeringWorldGen;
 import fr.alasdiablo.jerintegration.compat.mekanism.MekanismWorldGen;
+import fr.alasdiablo.jerintegration.compat.miningmaster.MiningMasterWorldGen;
 import fr.alasdiablo.jerintegration.compat.randomite.RandomiteWorldGen;
 import fr.alasdiablo.jerintegration.compat.tconstruct.TConstructWorldGen;
 import jeresources.compatibility.api.JERAPI;
@@ -62,6 +63,16 @@ public class CompatibilityHandler {
                 new RandomiteWorldGen().register(api);
             } catch (Exception e) {
                 JERIntegration.LOGGER.info("Failing to apply patch for Randomite");
+                loggerError(e);
+            }
+        }
+
+        if (JERIntegration.Compat.MINING_MASTER && JERIntegration.DisableConfig.CONFIG.MINING_MASTER.get()) {
+            try {
+                JERIntegration.LOGGER.info("Applying Mining Master patch");
+                new MiningMasterWorldGen().register(api);
+            } catch (Exception e) {
+                JERIntegration.LOGGER.info("Failing to apply patch for Mining Master");
                 loggerError(e);
             }
         }
