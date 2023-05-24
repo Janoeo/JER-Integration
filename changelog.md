@@ -1,6 +1,6 @@
 ### 4.4.0
 + Add Support
-  + Mining Master (4.0.0)
+  + Mining Master (4.0.0) ([#13](https://github.com/Janoeo/JER-Integration/pull/13))
 + Update
   + Forge (43.2.11)
   + JEI (11.6.0.1015)
