@@ -18,16 +18,14 @@ public class JERIntegration {
     public static final  String               MOD_ID      = "jerintegration";
     public static final  Logger               LOGGER      = LogManager.getLogger(JERIntegration.MOD_ID);
     private static final ModList              MOD_LIST    = ModList.get();
-    public final         CompatibilityHandler compatibilityHandler;
 
     public JERIntegration() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DisableConfig.CONFIG_SPEC);
-        this.compatibilityHandler = new CompatibilityHandler();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     }
 
     private void setup(final FMLCommonSetupEvent commonSetupEvent) {
-        this.compatibilityHandler.init();
+        CompatibilityHandler.init();
     }
 
     public static class DisableConfig {
@@ -39,15 +37,18 @@ public class JERIntegration {
             CONFIG = configPair.getLeft();
         }
         public static class Config {
-            public final ForgeConfigSpec.BooleanValue AE2;
+            public final ForgeConfigSpec.BooleanValue RANDOMITE;
             public final ForgeConfigSpec.BooleanValue CREATE;
             public final ForgeConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
             public final ForgeConfigSpec.BooleanValue TINKERS_CONSTRUCT;
             public final ForgeConfigSpec.BooleanValue MEKANISM;
+            public final ForgeConfigSpec.BooleanValue MINING_MASTER;
+            public final ForgeConfigSpec.BooleanValue AE2;
+
             public Config(ForgeConfigSpec.@NotNull Builder builder) {
                 builder.comment("Jer Integration override options").push("jer-integration");
 
-                AE2 = builder.comment("Enable / Disable patch for Applied Energistics 2").define("ae2", true);
+                RANDOMITE = builder.comment("Enable / Disable patch for Randomite Classic").define("randomite", true);
 
                 CREATE = builder.comment("Enable / Disable patch for Create").define("create", true);
 
@@ -56,15 +57,21 @@ public class JERIntegration {
                 TINKERS_CONSTRUCT = builder.comment("Enable / Disable patch for Tinkers' Construct").define("tconstruct", true);
 
                 MEKANISM = builder.comment("Enable / Disable patch for Mekanism").define("mekanism", true);
+
+                MINING_MASTER = builder.comment("Enable / Disable patch for Mining Master").define("miningmaster", true);
+
+                AE2 = builder.comment("Enable / Disable patch for Applied Energistics 2").define("ae2", true);
             }
         }
     }
 
     public static class Compat {
-        public static boolean AE2                   = MOD_LIST.isLoaded("ae2");
+        public static boolean RANDOMITE             = MOD_LIST.isLoaded("randomite");
         public static boolean CREATE                = MOD_LIST.isLoaded("create");
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");
         public static boolean MEKANISM              = MOD_LIST.isLoaded("mekanism");
+        public static boolean MINING_MASTER         = MOD_LIST.isLoaded("miningmaster");
+        public static boolean AE2                   = MOD_LIST.isLoaded("ae2");
     }
 }
