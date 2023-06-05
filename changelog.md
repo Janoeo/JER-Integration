@@ -1,3 +1,7 @@
+### 3.4.0
++ Back port 1.19.2 compatibility ([#16](https://github.com/Janoeo/JER-Integration/pull/16), [#15](https://github.com/Janoeo/JER-Integration/issues/15), [#14](https://github.com/Janoeo/JER-Integration/issues/14))
++ Update forge to 40.2.9
+
 ### 4.4.0
 + Add Support
   + Mining Master (4.0.0) ([#13](https://github.com/Janoeo/JER-Integration/pull/13))
