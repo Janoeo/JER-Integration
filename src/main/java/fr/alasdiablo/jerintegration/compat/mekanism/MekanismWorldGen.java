@@ -9,20 +9,15 @@ import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
 import mekanism.common.config.MekanismConfig;
-import mekanism.common.config.WorldConfig;
 import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.registries.MekanismItems;
 import mekanism.common.resource.ResourceType;
 import mekanism.common.resource.ore.OreBlockType;
 import mekanism.common.resource.ore.OreType;
 import mekanism.common.util.EnumUtils;
-import mekanism.common.world.height.ConfigurableHeightRange;
 import mekanism.common.world.height.HeightShape;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelHeightAccessor;
-import net.minecraft.world.level.chunk.ChunkGenerator;
-import net.minecraft.world.level.levelgen.WorldGenerationContext;
 
 import java.util.Objects;
 
@@ -30,18 +25,6 @@ import java.util.Objects;
 public class MekanismWorldGen extends WorldGenIntegration {
     @Override
     public void registerWorldGen(IWorldGenRegistry registry) {
-//        for (OreType type : EnumUtils.ORE_TYPES) {
-//            int features = type.getBaseConfigs().size();
-//            for (int vein = 0; vein < features; vein++) {
-//                OreType.OreVeinType oreVeinType  = new OreType.OreVeinType(type, vein);
-//                WorldConfig.OreVeinConfig oreVeinConfig = MekanismConfig.world.getVeinConfig(oreVeinType);
-//                OreType oreType = oreVeinType.type();
-//                OreBlockType        oreBlockType = MekanismBlocks.ORES.get(oreType);
-//                IntSupplier         maxVienSize  = oreVeinConfig.maxVeinSize();
-//                IntSupplier             perChuck = oreVeinConfig.perChunk();
-//                ConfigurableHeightRange range     = oreVeinConfig.range();
-//            }
-//        }
 
         WorldContext fakeContext = new WorldContext();
         for (OreType type: EnumUtils.ORE_TYPES) {

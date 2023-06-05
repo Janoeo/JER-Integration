@@ -11,12 +11,12 @@ import java.util.List;
 public class RestrictionBasaltDeltas extends Restriction {
 
     public RestrictionBasaltDeltas() {
-        super(BiomeRestriction.NONE);
+        super(BiomeRestriction.NO_RESTRICTION);
     }
 
     @Override
     public List<String> getBiomeRestrictions() {
-        return Collections.singletonList("  " + Biomes.BASALT_DELTAS.getRegistryName());
+        return Collections.singletonList("  " + Biomes.BASALT_DELTAS.registry());
     }
 
     @Override
@@ -26,8 +26,7 @@ public class RestrictionBasaltDeltas extends Restriction {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof Restriction)) return false;
-        Restriction other = (Restriction) obj;
+        if (!(obj instanceof Restriction other)) return false;
         if (!other.getBiomeRestrictions().equals(this.getBiomeRestrictions())) return false;
         return other.getBiomeRestrictions().equals(this.getBiomeRestrictions());
     }

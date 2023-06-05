@@ -26,7 +26,7 @@ JER Integration for other mod
     modId = "jei"
     mandatory = true
     versionRange = "[9.5.5.174,)"
-    ordering = "AFTER"
+    ordering = "NONE"
     side = "BOTH"
 [[dependencies.jerintegration]]
     modId = "jeresources"
