@@ -1,3 +1,7 @@
+### 3.4.0
++ Back port 1.19.2 compatibility ([#16](https://github.com/Janoeo/JER-Integration/pull/16), [#15](https://github.com/Janoeo/JER-Integration/issues/15), [#14](https://github.com/Janoeo/JER-Integration/issues/14))
++ Update forge to 40.2.9
+
 ### 3.3.2
 + Update create ([#8](https://github.com/Janoeo/JER-Integration/pull/8))
 + Add config file to manually disable mod

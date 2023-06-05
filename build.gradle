@@ -18,8 +18,8 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
 def majorVersion = 3
-def minorVersion = 3
-def buildVersion = 2
+def minorVersion = 4
+def buildVersion = 0
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -107,31 +107,31 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.60'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.9'
 
     implementation fileTree(dir:'lib', include:'*.jar')
 
     implementation fg.deobf('curse.maven:jei-238222:4434393')                       // JEI (10.2.1.1004)
     implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3831559') // JER (0.14.1.171)
 
-    implementation fg.deobf('curse.maven:immersiveengineering-231951:4412849')      // Immersive Engineering (8.4.0-161)
+    implementation fg.deobf('curse.maven:immersive-engineering-231951:4412849')      // Immersive Engineering (8.4.0-161)
 
     implementation fg.deobf('curse.maven:create-328085:4550986')                    // Create (v0.5.1b)
     compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.18.2-1.1.3')        // Create source dependencies
 
     implementation fg.deobf('curse.maven:mekanism-268560:3875976')                  // Mekanism (10.2.5.465)
 
-    implementation fg.deobf('curse.maven:extreme-reactors-250277:4526683')          // Extreme Reactors (2.0.63)
+    implementation fg.deobf('curse.maven:extreme-reactors-250277:4526167')          // Extreme Reactors (2.0.63)
     implementation fg.deobf('curse.maven:zerocore-247921:4526166')                  // ZeroCore 2 (2.1.34)
 
-    implementation fg.deobf("curse.maven:randomite-classic-375134:3680209")         // Randomite Classic (v1.1.2)
+    implementation fg.deobf('curse.maven:randomite-classic-375134:3680209')         // Randomite Classic (v1.1.2)
 
     implementation fg.deobf('curse.maven:mantle-74924:4509007')                     // Mantle (1.9.45)
     implementation fg.deobf('curse.maven:tinkers-construct-74072:4509008')          // Tinkers' Construct (3.6.4.113)
 
-    implementation fg.deobf("curse.maven:mining-master-534956:4041440")             // Mining Master (4.0.0)
+    implementation fg.deobf('curse.maven:mining-master-534956:4041438')             // Mining Master (4.0.0)
 
-    implementation fg.deobf("curse.maven:applied-energistics-2-223794:4548560")     // Applied Energistics 2 (11.7.4)
+    implementation fg.deobf('curse.maven:applied-energistics-2-223794:4548560')     // Applied Energistics 2 (11.7.4)
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
