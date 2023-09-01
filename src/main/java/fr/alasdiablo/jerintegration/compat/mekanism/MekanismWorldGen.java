@@ -1,6 +1,7 @@
 package fr.alasdiablo.jerintegration.compat.mekanism;
 
 import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
+import fr.alasdiablo.jerintegration.util.JERIntegrationUtils;
 import fr.alasdiablo.jerintegration.util.WorldContext;
 import jeresources.api.IWorldGenRegistry;
 import jeresources.api.conditionals.Conditional;
@@ -27,7 +28,7 @@ public class MekanismWorldGen extends WorldGenIntegration {
     public void registerWorldGen(IWorldGenRegistry registry) {
 
         WorldContext fakeContext = new WorldContext();
-        for (OreType type: EnumUtils.ORE_TYPES) {
+        for (OreType type : EnumUtils.ORE_TYPES) {
             int features = type.getBaseConfigs().size();
 
             for (int vein = 0; vein < features; ++vein) {
@@ -49,7 +50,7 @@ public class MekanismWorldGen extends WorldGenIntegration {
                     } else {
                         int range = (oreVeinConfig.range().maxInclusive().resolveY(fakeContext) - oreVeinConfig.range().minInclusive().resolveY(fakeContext)) /
                                 2;
-                        int midY  = range + oreVeinConfig.range().minInclusive().resolveY(fakeContext);
+                        int midY = range + oreVeinConfig.range().minInclusive().resolveY(fakeContext);
                         distribution = new DistributionTriangular(
                                 oreVeinConfig.perChunk().getAsInt(),
                                 oreVeinConfig.maxVeinSize().getAsInt(),
@@ -60,15 +61,11 @@ public class MekanismWorldGen extends WorldGenIntegration {
                     if (type.getResource().getRegistrySuffix().equals("fluorite")) {
                         Item rawOre = MekanismItems.FLUORITE_GEM.asItem();
 
-                        registry.register(
+                        JERIntegrationUtils.register(registry,
                                 new ItemStack(oreBlockType.stoneBlock()),
-                                distribution,
-                                true,
-                                new LootDrop(
-                                        new ItemStack(rawOre),
-                                        1, 1,
-                                        Conditional.affectedByFortune
-                                )
+                                new ItemStack(oreBlockType.deepslateBlock()),
+                                new ItemStack(rawOre),
+                                distribution
                         );
                     } else {
                         Item rawOre = Objects.requireNonNull(MekanismItems.PROCESSED_RESOURCES.get(
@@ -76,15 +73,11 @@ public class MekanismWorldGen extends WorldGenIntegration {
                                 type.getResource()
                         )).asItem();
 
-                        registry.register(
+                        JERIntegrationUtils.register(registry,
                                 new ItemStack(oreBlockType.stoneBlock()),
-                                distribution,
-                                true,
-                                new LootDrop(
-                                        new ItemStack(rawOre),
-                                        1, 1,
-                                        Conditional.affectedByFortune
-                                )
+                                new ItemStack(oreBlockType.deepslateBlock()),
+                                new ItemStack(rawOre),
+                                distribution
                         );
                     }
                 }

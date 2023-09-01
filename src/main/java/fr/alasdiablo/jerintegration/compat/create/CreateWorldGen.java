@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
+import fr.alasdiablo.jerintegration.util.JERIntegrationUtils;
 import jeresources.api.IWorldGenRegistry;
 import jeresources.api.conditionals.Conditional;
 import jeresources.api.distributions.DistributionSquare;
@@ -31,15 +32,15 @@ public class CreateWorldGen extends WorldGenIntegration {
     @Override
     public void registerWorldGen(@NotNull IWorldGenRegistry registry) {
         var config = this.getValues("worldgen.v2.zinc_ore");
-        registry.register(
+        JERIntegrationUtils.register(registry,
                 new ItemStack(AllBlocks.ZINC_ORE.get()),
+                new ItemStack(AllBlocks.DEEPSLATE_ZINC_ORE.get()),
+                new ItemStack(AllItems.RAW_ZINC.get()),
                 new DistributionSquare(
                         config.get("clusterSize").intValue(),
                         config.get("frequency").intValue(),
                         config.get("minHeight").intValue(),
                         config.get("maxHeight").intValue()
-                ), true,
-                new LootDrop(new ItemStack(AllItems.RAW_ZINC.get()), 1, 1, Conditional.affectedByFortune)
-        );
+                ));
     }
 }
