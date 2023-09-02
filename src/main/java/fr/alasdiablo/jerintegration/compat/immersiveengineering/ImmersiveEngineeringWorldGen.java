@@ -17,10 +17,10 @@ public class ImmersiveEngineeringWorldGen extends WorldGenIntegration {
     @Override
     public void registerWorldGen(IWorldGenRegistry registry) {
         IEServerConfig.ORES.ores.forEach((veinType, oreConfig) -> {
-            IEBlocks.BlockEntry<Block> ore_normal = IEBlocks.Metals.ORES.get(veinType.metal);
-            IEBlocks.BlockEntry<Block> ore_deepslate = IEBlocks.Metals.DEEPSLATE_ORES.get(veinType.metal);
+            IEBlocks.BlockEntry<Block>  stoneOreBlock = IEBlocks.Metals.ORES.get(veinType.metal);
+            IEBlocks.BlockEntry<Block>  deepslateOreBlock = IEBlocks.Metals.DEEPSLATE_ORES.get(veinType.metal);
             IEItems.ItemRegObject<Item> rawOre = IEItems.Metals.RAW_ORES.get(veinType.metal);
-            if (ore_normal != null && ore_normal.get() != null) {
+            if (stoneOreBlock != null && stoneOreBlock.get() != null) {
                 DistributionBase distribution;
 
                 if ((IEServerConfig.CONFIG_SPEC.isLoaded() ? oreConfig.distribution.get() : oreConfig.distribution.getDefault())
@@ -33,18 +33,20 @@ public class ImmersiveEngineeringWorldGen extends WorldGenIntegration {
                     );
                 } else {
                     int range = (IEServerConfig.getOrDefault(oreConfig.maxY) - IEServerConfig.getOrDefault(oreConfig.minY)) / 2;
-                    int midY = range + IEServerConfig.getOrDefault(oreConfig.minY);
+                    int midY  = range + IEServerConfig.getOrDefault(oreConfig.minY);
                     distribution = new DistributionTriangular(
                             IEServerConfig.getOrDefault(oreConfig.veinsPerChunk),
                             IEServerConfig.getOrDefault(oreConfig.veinSize),
                             midY, range
                     );
                 }
-                JERIntegrationUtils.register(registry,
-                        new ItemStack(ore_normal),
-                        new ItemStack(ore_deepslate),
+                JERIntegrationUtils.register(
+                        registry,
+                        new ItemStack(stoneOreBlock),
+                        new ItemStack(deepslateOreBlock),
                         new ItemStack(rawOre.get()),
-                        distribution);
+                        distribution
+                );
             }
         });
     }

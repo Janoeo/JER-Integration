@@ -4,11 +4,9 @@ import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
 import fr.alasdiablo.jerintegration.util.JERIntegrationUtils;
 import fr.alasdiablo.jerintegration.util.WorldContext;
 import jeresources.api.IWorldGenRegistry;
-import jeresources.api.conditionals.Conditional;
 import jeresources.api.distributions.DistributionBase;
 import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
-import jeresources.api.drop.LootDrop;
 import mekanism.common.config.MekanismConfig;
 import mekanism.common.registries.MekanismBlocks;
 import mekanism.common.registries.MekanismItems;
@@ -28,7 +26,7 @@ public class MekanismWorldGen extends WorldGenIntegration {
     public void registerWorldGen(IWorldGenRegistry registry) {
 
         WorldContext fakeContext = new WorldContext();
-        for (OreType type : EnumUtils.ORE_TYPES) {
+        for (OreType type: EnumUtils.ORE_TYPES) {
             int features = type.getBaseConfigs().size();
 
             for (int vein = 0; vein < features; ++vein) {
@@ -61,7 +59,8 @@ public class MekanismWorldGen extends WorldGenIntegration {
                     if (type.getResource().getRegistrySuffix().equals("fluorite")) {
                         Item rawOre = MekanismItems.FLUORITE_GEM.asItem();
 
-                        JERIntegrationUtils.register(registry,
+                        JERIntegrationUtils.register(
+                                registry,
                                 new ItemStack(oreBlockType.stoneBlock()),
                                 new ItemStack(oreBlockType.deepslateBlock()),
                                 new ItemStack(rawOre),
@@ -73,7 +72,8 @@ public class MekanismWorldGen extends WorldGenIntegration {
                                 type.getResource()
                         )).asItem();
 
-                        JERIntegrationUtils.register(registry,
+                        JERIntegrationUtils.register(
+                                registry,
                                 new ItemStack(oreBlockType.stoneBlock()),
                                 new ItemStack(oreBlockType.deepslateBlock()),
                                 new ItemStack(rawOre),

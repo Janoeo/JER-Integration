@@ -6,9 +6,7 @@ import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
 import fr.alasdiablo.jerintegration.util.JERIntegrationUtils;
 import jeresources.api.IWorldGenRegistry;
-import jeresources.api.conditionals.Conditional;
 import jeresources.api.distributions.DistributionSquare;
-import jeresources.api.drop.LootDrop;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +30,8 @@ public class CreateWorldGen extends WorldGenIntegration {
     @Override
     public void registerWorldGen(@NotNull IWorldGenRegistry registry) {
         var config = this.getValues("worldgen.v2.zinc_ore");
-        JERIntegrationUtils.register(registry,
+        JERIntegrationUtils.register(
+                registry,
                 new ItemStack(AllBlocks.ZINC_ORE.get()),
                 new ItemStack(AllBlocks.DEEPSLATE_ZINC_ORE.get()),
                 new ItemStack(AllItems.RAW_ZINC.get()),
@@ -41,6 +40,7 @@ public class CreateWorldGen extends WorldGenIntegration {
                         config.get("frequency").intValue(),
                         config.get("minHeight").intValue(),
                         config.get("maxHeight").intValue()
-                ));
+                )
+        );
     }
 }

@@ -1,3 +1,7 @@
+### 4.4.1
++ Fix
+  + Add entry for deepslate ore ([#18](https://github.com/Janoeo/JER-Integration/pull/18))
+
 ### 3.4.0
 + Back port 1.19.2 compatibility ([#16](https://github.com/Janoeo/JER-Integration/pull/16), [#15](https://github.com/Janoeo/JER-Integration/issues/15), [#14](https://github.com/Janoeo/JER-Integration/issues/14))
 + Update forge to 40.2.9

@@ -70,6 +70,6 @@ public class JERIntegration {
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");
         public static boolean MEKANISM              = MOD_LIST.isLoaded("mekanism");
-        public static boolean MINING_MASTER = MOD_LIST.isLoaded("miningmaster");
+        public static boolean MINING_MASTER         = MOD_LIST.isLoaded("miningmaster");
     }
 }

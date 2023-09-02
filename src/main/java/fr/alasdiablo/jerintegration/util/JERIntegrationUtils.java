@@ -5,24 +5,27 @@ import jeresources.api.conditionals.Conditional;
 import jeresources.api.distributions.DistributionBase;
 import jeresources.api.drop.LootDrop;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public interface JERIntegrationUtils {
-    static void register(IWorldGenRegistry registry, ItemStack ore_normal, ItemStack ore_deepslate, ItemStack drop_item, DistributionBase distribution) {
+    static void register(
+            @NotNull IWorldGenRegistry registry, ItemStack stoneOreBlock, ItemStack deepslateOreBlock, ItemStack rawItem, DistributionBase distribution
+    ) {
         LootDrop drop = new LootDrop(
-                drop_item,
+                rawItem,
                 1, 1,
                 Conditional.affectedByFortune
         );
 
         registry.register(
-                ore_normal,
+                stoneOreBlock,
                 distribution,
                 true,
                 drop
         );
-        if (ore_deepslate != null) {
+        if (deepslateOreBlock != null) {
             registry.register(
-                    ore_deepslate,
+                    deepslateOreBlock,
                     distribution,
                     true,
                     drop

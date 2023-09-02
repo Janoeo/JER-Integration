@@ -8,10 +8,12 @@ import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.jetbrains.annotations.NotNull;
 
 public class RandomiteWorldGen extends WorldGenIntegration {
     @Override
-    public void registerWorldGen(IWorldGenRegistry registry) throws IllegalStateException, NoSuchFieldException, NoSuchMethodException, NoClassDefFoundError {
+    public void registerWorldGen(@NotNull IWorldGenRegistry registry)
+            throws IllegalStateException, NoSuchFieldException, NoSuchMethodException, NoClassDefFoundError {
         registry.register(
                 new ItemStack(RandomiteRegistry.RANDOMITE_ORE.get()),
                 new DistributionTriangular(2, 4, 0, 32),
