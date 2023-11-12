@@ -143,5 +143,18 @@ public class ThermalWorldGen extends WorldGenIntegration {
                         1, 1
                 )
         );
+        registry.register(
+                new ItemStack(BLOCKS.get("oil_red_sand")),
+                new DistributionTriangular(
+                        2,
+                        24,
+                        60,
+                        20
+                ),
+                new LootDrop(
+                        ITEMS.get("oil_red_sand"),
+                        1, 1
+                )
+        );
     }
 }
