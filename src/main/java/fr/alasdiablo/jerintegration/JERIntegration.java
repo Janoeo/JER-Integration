@@ -41,6 +41,7 @@ public class JERIntegration {
         public static class Config {
             public final ForgeConfigSpec.BooleanValue RANDOMITE;
             public final ForgeConfigSpec.BooleanValue CREATE;
+            public final ForgeConfigSpec.BooleanValue THERMAL;
             public final ForgeConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
             public final ForgeConfigSpec.BooleanValue TINKERS_CONSTRUCT;
             public final ForgeConfigSpec.BooleanValue MEKANISM;
@@ -52,6 +53,8 @@ public class JERIntegration {
                 RANDOMITE = builder.comment("Enable / Disable patch for Randomite Classic").define("randomite", true);
 
                 CREATE = builder.comment("Enable / Disable patch for Create").define("create", true);
+
+                THERMAL = builder.comment("Enable / Disable patch for Thermal").define("thermal", true);
 
                 IMMERSIVE_ENGINEERING = builder.comment("Enable / Disable patch for Immersive Engineering").define("immersiveengineering", true);
 
@@ -67,6 +70,7 @@ public class JERIntegration {
     public static class Compat {
         public static boolean RANDOMITE             = MOD_LIST.isLoaded("randomite");
         public static boolean CREATE                = MOD_LIST.isLoaded("create");
+        public static boolean THERMAL                = MOD_LIST.isLoaded("thermal");
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");
         public static boolean MEKANISM              = MOD_LIST.isLoaded("mekanism");
