@@ -3,11 +3,6 @@ buildscript {
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://repo.spongepowered.org/maven' }
         maven { url = 'https://maven.parchmentmc.org' }
-        maven { url 'https://maven.covers1624.net/' }
-        maven { url 'https://maven.tterrag.com/' }
-        maven { url 'https://dvs1.progwml6.com/files/maven/' }
-        maven { url 'https://maven.blamejared.com/' }
-        maven { url 'https://maven.theillusivec4.top/' }
         mavenCentral()
     }
     dependencies {
@@ -107,8 +102,14 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven { url = 'https://www.cursemaven.com/' }
+    mavenLocal()
+    maven { url 'https://www.cursemaven.com/' }
     maven { url 'https://maven.tterrag.com/' }
+    maven { url 'https://maven.covers1624.net/' }
+    maven { url 'https://dvs1.progwml6.com/files/maven/' }
+    maven { url 'https://maven.blamejared.com/' }
+    maven { url 'https://maven.theillusivec4.top/' }
+
 }
 
 dependencies {
@@ -133,8 +134,8 @@ dependencies {
 
     implementation fg.deobf("curse.maven:mining-master-534956:4041440")             // Mining Master (4.0.0)
 
-    implementation fg.deobf("com.teamcofh:cofh_core:1.19.2-10.3.0.+")// coFH Core (10.3.1.48)
-    implementation fg.deobf("com.teamcofh:thermal_core:1.19.2-10.3.0.+") {
+    implementation fg.deobf("com.teamcofh:cofh_core:1.19.2-10.3.0.+")               // coFH Core (10.3.0.+)
+    implementation fg.deobf("com.teamcofh:thermal_core:1.19.2-10.3.0.+") {          // Thermal Core (10.3.0.+)
         jarJar.ranged(it, "[1.19.2-10.3.0,1.19.2-10.4.0]")
     }
     implementation fg.deobf("curse.maven:thermal-foundation-222880:4782926")        // Thermal Foundation (10.3.1.57)
