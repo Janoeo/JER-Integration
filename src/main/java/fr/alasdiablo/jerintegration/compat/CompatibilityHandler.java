@@ -7,6 +7,7 @@ import fr.alasdiablo.jerintegration.compat.mekanism.MekanismWorldGen;
 import fr.alasdiablo.jerintegration.compat.miningmaster.MiningMasterWorldGen;
 import fr.alasdiablo.jerintegration.compat.randomite.RandomiteWorldGen;
 import fr.alasdiablo.jerintegration.compat.tconstruct.TConstructWorldGen;
+import fr.alasdiablo.jerintegration.compat.thermal.ThermalWorldGen;
 import jeresources.compatibility.api.JERAPI;
 import org.jetbrains.annotations.NotNull;
 
@@ -73,6 +74,16 @@ public class CompatibilityHandler {
                 new MiningMasterWorldGen().register(api);
             } catch (Exception e) {
                 JERIntegration.LOGGER.info("Failing to apply patch for Mining Master");
+                loggerError(e);
+            }
+        }
+
+        if (JERIntegration.Compat.THERMAL && JERIntegration.DisableConfig.CONFIG.THERMAL.get()) {
+            try {
+                JERIntegration.LOGGER.info("Applying Thermal patch");
+                new ThermalWorldGen().register(api);
+            } catch (Exception e) {
+                JERIntegration.LOGGER.info("Failing to apply patch for Thermal");
                 loggerError(e);
             }
         }

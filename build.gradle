@@ -102,14 +102,20 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-    maven { url = 'https://www.cursemaven.com/' }
+    mavenLocal()
+    maven { url 'https://www.cursemaven.com/' }
     maven { url 'https://maven.tterrag.com/' }
+    maven { url 'https://maven.covers1624.net/' }
+    maven { url 'https://dvs1.progwml6.com/files/maven/' }
+    maven { url 'https://maven.blamejared.com/' }
+    maven { url 'https://maven.theillusivec4.top/' }
+
 }
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.11'
 
-    implementation fileTree(dir:'lib', include:'*.jar')
+    implementation fileTree(dir: 'lib', include: '*.jar')
 
     implementation fg.deobf('curse.maven:jei-238222:4494410')                       // JEI (11.6.0.1015)
     implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3951643') // JER (1.1.0.179)
@@ -127,6 +133,14 @@ dependencies {
     implementation fg.deobf('curse.maven:randomite-classic-375134:3905205')         // Randomite Classic (v1.1.2)
 
     implementation fg.deobf("curse.maven:mining-master-534956:4041440")             // Mining Master (4.0.0)
+
+    implementation fg.deobf("com.teamcofh:cofh_core:1.19.2-10.3.0.+")               // coFH Core (10.3.0.+)
+    implementation fg.deobf("com.teamcofh:thermal_core:1.19.2-10.3.0.+") {          // Thermal Core (10.3.0.+)
+        jarJar.ranged(it, "[1.19.2-10.3.0,1.19.2-10.4.0]")
+    }
+    implementation fg.deobf("curse.maven:thermal-foundation-222880:4782926")        // Thermal Foundation (10.3.1.57)
+    implementation fg.deobf("curse.maven:thermal-expansion-69163:4782929")          // Thermal Expansion (10.3.1.25)
+
 
     // implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
     // implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)
