@@ -18,8 +18,8 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'maven-publish'
 
 def majorVersion = 4
-def minorVersion = 4
-def buildVersion = 1
+def minorVersion = 5
+def buildVersion = 0
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -108,7 +108,6 @@ repositories {
     maven { url 'https://maven.covers1624.net/' }
     maven { url 'https://dvs1.progwml6.com/files/maven/' }
     maven { url 'https://maven.blamejared.com/' }
-    maven { url 'https://maven.theillusivec4.top/' }
 
 }
 

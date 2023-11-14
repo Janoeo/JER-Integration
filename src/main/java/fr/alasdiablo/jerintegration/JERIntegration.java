@@ -70,7 +70,7 @@ public class JERIntegration {
     public static class Compat {
         public static boolean RANDOMITE             = MOD_LIST.isLoaded("randomite");
         public static boolean CREATE                = MOD_LIST.isLoaded("create");
-        public static boolean THERMAL                = MOD_LIST.isLoaded("thermal");
+        public static boolean THERMAL               = MOD_LIST.isLoaded("thermal");
         public static boolean IMMERSIVE_ENGINEERING = MOD_LIST.isLoaded("immersiveengineering");
         public static boolean TINKERS_CONSTRUCT     = MOD_LIST.isLoaded("tconstruct");
         public static boolean MEKANISM              = MOD_LIST.isLoaded("mekanism");

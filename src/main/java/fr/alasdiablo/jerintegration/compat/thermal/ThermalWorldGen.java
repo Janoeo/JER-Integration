@@ -1,27 +1,16 @@
 package fr.alasdiablo.jerintegration.compat.thermal;
 
-import com.legacy.randomite.RandomiteRegistry;
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllItems;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.alasdiablo.jerintegration.api.WorldGenIntegration;
 import fr.alasdiablo.jerintegration.util.JERIntegrationUtils;
 import jeresources.api.IWorldGenRegistry;
-import jeresources.api.conditionals.Conditional;
-import jeresources.api.distributions.DistributionSquare;
 import jeresources.api.distributions.DistributionTriangular;
 import jeresources.api.drop.LootDrop;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.common.ForgeConfigSpec;
 import org.jetbrains.annotations.NotNull;
 
 import static cofh.thermal.core.ThermalCore.BLOCKS;
 import static cofh.thermal.core.ThermalCore.ITEMS;
 import static cofh.thermal.core.util.RegistrationHelper.deepslate;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ThermalWorldGen extends WorldGenIntegration {
     @Override

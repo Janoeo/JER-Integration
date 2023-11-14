@@ -1,3 +1,6 @@
+### 4.5.0
++ Add Thermal Series ([#10](https://github.com/Janoeo/JER-Integration/issues/10)) ([#19](https://github.com/Janoeo/JER-Integration/pull/19))
+
 ### 4.4.1
 + Fix
   + Add entry for deepslate ore ([#18](https://github.com/Janoeo/JER-Integration/pull/18))
