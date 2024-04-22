@@ -1,100 +1,51 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://repo.spongepowered.org/maven' }
-        maven { url = 'https://maven.parchmentmc.org' }
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
-    }
-}
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'eclipse'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'maven-publish'
-
-def majorVersion = 4
-def minorVersion = 5
-def buildVersion = 0
-def isExperimental = false
-version = "${majorVersion}.${minorVersion}.${buildVersion}"
-if (isExperimental) {
-    version += '-experimental'
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT'
 }
 
-group = 'fr.alasdiablo.jerintegration'
-archivesBaseName = 'JER-Integration'
+version = mod_version
+group = mod_group_id
 
-def manifestAttributes = [
-        "Specification-Title"     : "JER-Integration",
-        "Specification-Vendor"    : "AlasDiablo",
-        "Specification-Version"   : "1",
-        "Implementation-Title"    : project.name,
-        "Implementation-Version"  : project.jar.archiveVersion,
-        "Implementation-Vendor"   : "AlasDiablo",
-        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-]
-
-def outputFolder = file(rootProject.getRootDir().getPath() + '/output')
+base {
+    archivesName = mod_id
+}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-def deobfSourceClassifier
-
 minecraft {
-    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
-    deobfSourceClassifier = getMappings().get()
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
     runs {
-        client {
+        configureEach {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'jerintegration'
             mods {
-                jerintegration {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         server {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'jerintegration'
-            mods {
-                jerintegration {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
         }
 
         gameTestServer {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'forge.enabledGameTestNamespaces', 'jerintegration'
-            mods {
-                jerintegration {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         data {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'jerintegration', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            mods {
-                jerintegration {
-                    source sourceSets.main
-                }
-            }
+            workingDirectory project.file('run-data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
 }
@@ -108,73 +59,88 @@ repositories {
     maven { url 'https://maven.covers1624.net/' }
     maven { url 'https://dvs1.progwml6.com/files/maven/' }
     maven { url 'https://maven.blamejared.com/' }
-
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.11'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
     implementation fileTree(dir: 'lib', include: '*.jar')
 
-    implementation fg.deobf('curse.maven:jei-238222:4494410')                       // JEI (11.6.0.1015)
-    implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:3951643') // JER (1.1.0.179)
+    implementation fg.deobf('curse.maven:jei-238222:5101366')                       // JEI (15.3.0.4)
+    implementation fg.deobf('curse.maven:just-enough-resources-jer-240630:5057220') // JER (1.4.0.247)
 
-    implementation fg.deobf('curse.maven:immersive-engineering-231951:4535935')     // Immersive Engineering (9.2.2-165)
+    implementation fg.deobf('curse.maven:immersive-engineering-231951:5224387')     // Immersive Engineering (10.1.0-171)
 
-    implementation fg.deobf('curse.maven:create-328085:4547147')                    // Create (v0.5.1a)
-    compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.19-1.1.5')          // Create source dependencies
+    implementation fg.deobf('curse.maven:create-328085:4835191')                    // Create (v0.5.1f)
+    compileOnly fg.deobf('com.tterrag.registrate:Registrate:MC1.20-1.3.3')          // Create source dependencies
 
-    implementation fg.deobf('curse.maven:mekanism-268560:4385637')                  // Mekanism (10.3.8.477)
+    implementation fg.deobf('curse.maven:mekanism-268560:5125665')                  // Mekanism (10.4.6.20)
 
-    implementation fg.deobf('curse.maven:extreme-reactors-250277:4526683')          // Extreme Reactors (2.0.63)
-    implementation fg.deobf('curse.maven:zerocore-247921:4526681')                  // Zero Core (2.1.34)
+    implementation fg.deobf('curse.maven:extreme-reactors-250277:4940344')          // Extreme Reactors (2.0.77)
+    implementation fg.deobf('curse.maven:zerocore-247921:4940340')                  // Zero Core (2.1.41)
 
-    implementation fg.deobf('curse.maven:randomite-classic-375134:3905205')         // Randomite Classic (v1.1.2)
+    compileOnly fg.deobf('curse.maven:randomite-classic-375134:3905205')            // Randomite Classic (v1.1.2)
 
-    implementation fg.deobf("curse.maven:mining-master-534956:4041440")             // Mining Master (4.0.0)
+    compileOnly fg.deobf("curse.maven:mining-master-534956:4041440")                // Mining Master (4.0.0)
 
-    implementation fg.deobf("com.teamcofh:cofh_core:1.19.2-10.3.0.+")               // coFH Core (10.3.0.+)
-    implementation fg.deobf("com.teamcofh:thermal_core:1.19.2-10.3.0.+") {          // Thermal Core (10.3.0.+)
+    compileOnly fg.deobf("com.teamcofh:cofh_core:1.19.2-10.3.0.+")                  // coFH Core (10.3.0.+)
+    compileOnly fg.deobf("com.teamcofh:thermal_core:1.19.2-10.3.0.+") {             // Thermal Core (10.3.0.+)
         jarJar.ranged(it, "[1.19.2-10.3.0,1.19.2-10.4.0]")
     }
-    implementation fg.deobf("curse.maven:thermal-foundation-222880:4782926")        // Thermal Foundation (10.3.1.57)
-    implementation fg.deobf("curse.maven:thermal-expansion-69163:4782929")          // Thermal Expansion (10.3.1.25)
+    compileOnly fg.deobf("curse.maven:thermal-foundation-222880:4782926")           // Thermal Foundation (10.3.1.57)
+    compileOnly fg.deobf("curse.maven:thermal-expansion-69163:4782929")             // Thermal Expansion (10.3.1.25)
 
 
-    // implementation fg.deobf('curse.maven:mantle-74924:3784500')                     // Mantle (1.9.20)
-    // implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')          // Tinkers' Construct (3.5.0.17)
+    // implementation fg.deobf('curse.maven:mantle-74924:3784500')                  // Mantle (1.9.20)
+    // implementation fg.deobf('curse.maven:tinkers-construct-74072:3784732')       // Tinkers' Construct (3.5.0.17)
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
-jar {
-    manifest.attributes(manifestAttributes)
-    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
 }
 
-jar.finalizedBy('reobfJar')
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1',
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
 
-tasks.register('sourcesJar', Jar) {
-    from sourceSets.main.allJava
-    def archiveName = 'sources-' + deobfSourceClassifier
-    archiveClassifier.set(archiveName)
-    destinationDirectory.set(outputFolder)
+    finalizedBy 'reobfJar'
 }
 
-tasks.register('deobfJar', Jar) {
-    from sourceSets.main.output
-    def archiveName = 'deobf-' + deobfSourceClassifier
-    archiveClassifier.set(archiveName)
-    manifest.attributes(manifestAttributes)
-    destinationDirectory.set(outputFolder)
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.projectDir}/mcmodsrepo"
+        }
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-}
-
-artifacts {
-    archives jar
-    archives sourcesJar
-    archives deobfJar
 }

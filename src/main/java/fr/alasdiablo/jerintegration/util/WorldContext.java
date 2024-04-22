@@ -30,7 +30,7 @@ public class WorldContext extends WorldGenerationContext {
     }
 
     public WorldContext() {
-        this(new ChunkGenerator(null, null, null) {
+        this(new ChunkGenerator(null) {
             @Override
             protected Codec<? extends ChunkGenerator> codec() {return null;}
 

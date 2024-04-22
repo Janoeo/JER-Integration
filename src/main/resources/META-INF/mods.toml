@@ -1,56 +1,53 @@
-modLoader = "javafml"
-loaderVersion = "[43,)"
-license = "MIT"
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
 [[mods]]
-modId = "jerintegration"
-version = "${file.jarVersion}"
-displayName = "JER Integration"
-credits = "Mezz for JEI, Way2Muchnoise for JER"
-authors = "AlasDiablo"
-description = '''
-JER Integration for other mod
-'''
-[[dependencies.jerintegration]]
-modId = "forge"
-mandatory = true
-versionRange = "[43,)"
-ordering = "NONE"
-side = "BOTH"
-[[dependencies.jerintegration]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.19.2,1.20)"
-ordering = "NONE"
-side = "BOTH"
-[[dependencies.jerintegration]]
-modId = "jei"
-mandatory = true
-versionRange = "[9.5.5.174,)"
-ordering = "NONE"
-side = "BOTH"
-[[dependencies.jerintegration]]
-modId = "jeresources"
-mandatory = true
-versionRange = "[0.14.1.160,)"
-ordering = "AFTER"
-side = "BOTH"
-[[dependencies.jerintegration]]
-modId = "ae2"
-mandatory = false
-versionRange = "[11.0.0-alpha.3,)"
-ordering = "AFTER"
-side = "BOTH"
-[[dependencies.jerintegration]]
-modId = "immersiveengineering"
-mandatory = false
-versionRange = "[1.18.2-8.0.0-146,)"
-ordering = "AFTER"
-side = "BOTH"
-[[dependencies.jerintegration]]
-modId = "tconstruct"
-mandatory = false
-versionRange = "[3.5.0.17,)"
-ordering = "AFTER"
-side = "BOTH"
-
-
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+credits="Mezz for JEI, Way2Muchnoise for JER"
+authors="${mod_authors}"
+displayTest="IGNORE_SERVER_VERSION"
+description='''${mod_description}'''
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId = "jei"
+    mandatory = true
+    versionRange = "[9.5.5.174,)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.${mod_id}]]
+    modId = "jeresources"
+    mandatory = true
+    versionRange = "[0.14.1.160,)"
+    ordering = "AFTER"
+    side = "BOTH"
+[[dependencies.${mod_id}]]
+    modId = "ae2"
+    mandatory = false
+    versionRange = "[11.0.0-alpha.3,)"
+    ordering = "AFTER"
+    side = "BOTH"
+[[dependencies.${mod_id}]]
+    modId = "immersiveengineering"
+    mandatory = false
+    versionRange = "[1.18.2-8.0.0-146,)"
+    ordering = "AFTER"
+    side = "BOTH"
+[[dependencies.${mod_id}]]
+    modId = "tconstruct"
+    mandatory = false
+    versionRange = "[3.5.0.17,)"
+    ordering = "AFTER"
+    side = "BOTH"
