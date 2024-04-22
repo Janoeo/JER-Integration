@@ -1,3 +1,6 @@
+### 5.5.0
++ Update to mc 1.20.1
+
 ### 4.5.0
 + Add Thermal Series ([#10](https://github.com/Janoeo/JER-Integration/issues/10)) ([#19](https://github.com/Janoeo/JER-Integration/pull/19))
 
