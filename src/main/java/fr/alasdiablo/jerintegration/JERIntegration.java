@@ -1,13 +1,13 @@
 package fr.alasdiablo.jerintegration;
 
 import fr.alasdiablo.jerintegration.compat.CompatibilityHandler;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,9 +19,10 @@ public class JERIntegration {
     public static final  Logger  LOGGER   = LogManager.getLogger(JERIntegration.MOD_ID);
     private static final ModList MOD_LIST = ModList.get();
 
-    public JERIntegration() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, DisableConfig.CONFIG_SPEC);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+    public JERIntegration(IEventBus modEventBus, ModContainer modContainer) {
+        modContainer.registerConfig(ModConfig.Type.CLIENT, DisableConfig.CONFIG_SPEC);
+
+        modEventBus.addListener(this::setup);
     }
 
     private void setup(final FMLCommonSetupEvent commonSetupEvent) {
@@ -29,25 +30,25 @@ public class JERIntegration {
     }
 
     public static class DisableConfig {
-        public static final ForgeConfigSpec      CONFIG_SPEC;
+        public static final ModConfigSpec CONFIG_SPEC;
         public static final DisableConfig.Config CONFIG;
 
         static {
-            Pair<Config, ForgeConfigSpec> configPair = new ForgeConfigSpec.Builder().configure(DisableConfig.Config::new);
+            Pair<Config, ModConfigSpec> configPair = new ModConfigSpec.Builder().configure(DisableConfig.Config::new);
             CONFIG_SPEC = configPair.getRight();
             CONFIG      = configPair.getLeft();
         }
 
         public static class Config {
-            public final ForgeConfigSpec.BooleanValue RANDOMITE;
-            public final ForgeConfigSpec.BooleanValue CREATE;
-            public final ForgeConfigSpec.BooleanValue THERMAL;
-            public final ForgeConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
-            public final ForgeConfigSpec.BooleanValue TINKERS_CONSTRUCT;
-            public final ForgeConfigSpec.BooleanValue MEKANISM;
-            public final ForgeConfigSpec.BooleanValue MINING_MASTER;
+            public final ModConfigSpec.BooleanValue RANDOMITE;
+            public final ModConfigSpec.BooleanValue CREATE;
+            public final ModConfigSpec.BooleanValue THERMAL;
+            public final ModConfigSpec.BooleanValue IMMERSIVE_ENGINEERING;
+            public final ModConfigSpec.BooleanValue TINKERS_CONSTRUCT;
+            public final ModConfigSpec.BooleanValue MEKANISM;
+            public final ModConfigSpec.BooleanValue MINING_MASTER;
 
-            public Config(ForgeConfigSpec.@NotNull Builder builder) {
+            public Config(ModConfigSpec.@NotNull Builder builder) {
                 builder.comment("Jer Integration override options").push("jer-integration");
 
                 RANDOMITE = builder.comment("Enable / Disable patch for Randomite Classic").define("randomite", true);

@@ -1,3 +1,6 @@
+### 6.5.0
++ Update to mc 1.21.1
+
 ### 5.5.0
 + Update to mc 1.20.1
 

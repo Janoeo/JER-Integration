@@ -1,6 +1,7 @@
 package fr.alasdiablo.jerintegration.util;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.WorldGenRegion;
@@ -19,7 +20,6 @@ import net.minecraft.world.level.levelgen.blending.Blender;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 
 @SuppressWarnings("ConstantConditions")
 @ParametersAreNonnullByDefault
@@ -32,7 +32,9 @@ public class WorldContext extends WorldGenerationContext {
     public WorldContext() {
         this(new ChunkGenerator(null) {
             @Override
-            protected Codec<? extends ChunkGenerator> codec() {return null;}
+            protected MapCodec<? extends ChunkGenerator> codec() {
+                return null;
+            }
 
             @Override
             public void applyCarvers(
@@ -55,9 +57,9 @@ public class WorldContext extends WorldGenerationContext {
             }
 
             @Override
-            public CompletableFuture<ChunkAccess> fillFromNoise(
-                    Executor pExecutor, Blender pBlender, RandomState pRandom, StructureManager pStructureManager, ChunkAccess pChunk
-            ) {return null;}
+            public CompletableFuture<ChunkAccess> fillFromNoise(Blender blender, RandomState randomState, StructureManager structureManager, ChunkAccess chunkAccess) {
+                return null;
+            }
 
             @Override
             public int getMinY() {

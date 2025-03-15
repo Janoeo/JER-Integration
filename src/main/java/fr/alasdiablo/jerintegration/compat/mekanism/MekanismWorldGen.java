@@ -61,8 +61,8 @@ public class MekanismWorldGen extends WorldGenIntegration {
 
                         JERIntegrationUtils.register(
                                 registry,
-                                new ItemStack(oreBlockType.stoneBlock()),
-                                new ItemStack(oreBlockType.deepslateBlock()),
+                                new ItemStack(oreBlockType.stone()),
+                                new ItemStack(oreBlockType.deepslate()),
                                 new ItemStack(rawOre),
                                 distribution
                         );
@@ -74,8 +74,8 @@ public class MekanismWorldGen extends WorldGenIntegration {
 
                         JERIntegrationUtils.register(
                                 registry,
-                                new ItemStack(oreBlockType.stoneBlock()),
-                                new ItemStack(oreBlockType.deepslateBlock()),
+                                new ItemStack(oreBlockType.stone()),
+                                new ItemStack(oreBlockType.deepslate()),
                                 new ItemStack(rawOre),
                                 distribution
                         );

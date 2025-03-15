@@ -15,7 +15,7 @@ public class RandomiteWorldGen extends WorldGenIntegration {
     public void registerWorldGen(@NotNull IWorldGenRegistry registry)
             throws IllegalStateException, NoSuchFieldException, NoSuchMethodException, NoClassDefFoundError {
         registry.register(
-                new ItemStack(RandomiteRegistry.RANDOMITE_ORE.get()),
+                new ItemStack(RandomiteRegistry.BlockReg.RANDOMITE_ORE.get()),
                 new DistributionTriangular(2, 4, 0, 32),
                 new LootDrop(Items.COAL, 1, 1, 25f / 178f, Conditional.affectedByFortune),
                 new LootDrop(Items.LAPIS_LAZULI, 4, 9, 27f / 178f),
